@@ -1,0 +1,572 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03062171213BE1D200FCA5DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03062170213BE1D200FCA5DD /* AppDelegate.swift */; };
+		03062173213BE1D400FCA5DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03062172213BE1D400FCA5DD /* Assets.xcassets */; };
+		03062176213BE1D400FCA5DD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03062174213BE1D400FCA5DD /* MainMenu.xib */; };
+		03062182213BE1D400FCA5DD /* PDFGeneratorTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03062181213BE1D400FCA5DD /* PDFGeneratorTableViewTests.swift */; };
+		0306218D213BE1D400FCA5DD /* PDFGeneratorTableViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306218C213BE1D400FCA5DD /* PDFGeneratorTableViewUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0306217E213BE1D400FCA5DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03062165213BE1D200FCA5DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0306216C213BE1D200FCA5DD;
+			remoteInfo = PDFGeneratorTableView;
+		};
+		03062189213BE1D400FCA5DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 03062165213BE1D200FCA5DD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0306216C213BE1D200FCA5DD;
+			remoteInfo = PDFGeneratorTableView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0306216D213BE1D200FCA5DD /* PDFGeneratorTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDFGeneratorTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		03062170213BE1D200FCA5DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		03062172213BE1D400FCA5DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03062175213BE1D400FCA5DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		03062177213BE1D400FCA5DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03062178213BE1D400FCA5DD /* PDFGeneratorTableView.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PDFGeneratorTableView.entitlements; sourceTree = "<group>"; };
+		0306217D213BE1D400FCA5DD /* PDFGeneratorTableViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFGeneratorTableViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03062181213BE1D400FCA5DD /* PDFGeneratorTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFGeneratorTableViewTests.swift; sourceTree = "<group>"; };
+		03062183213BE1D400FCA5DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03062188213BE1D400FCA5DD /* PDFGeneratorTableViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDFGeneratorTableViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0306218C213BE1D400FCA5DD /* PDFGeneratorTableViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFGeneratorTableViewUITests.swift; sourceTree = "<group>"; };
+		0306218E213BE1D400FCA5DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0306216A213BE1D200FCA5DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0306217A213BE1D400FCA5DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03062185213BE1D400FCA5DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03062164213BE1D200FCA5DD = {
+			isa = PBXGroup;
+			children = (
+				0306216F213BE1D200FCA5DD /* PDFGeneratorTableView */,
+				03062180213BE1D400FCA5DD /* PDFGeneratorTableViewTests */,
+				0306218B213BE1D400FCA5DD /* PDFGeneratorTableViewUITests */,
+				0306216E213BE1D200FCA5DD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0306216E213BE1D200FCA5DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0306216D213BE1D200FCA5DD /* PDFGeneratorTableView.app */,
+				0306217D213BE1D400FCA5DD /* PDFGeneratorTableViewTests.xctest */,
+				03062188213BE1D400FCA5DD /* PDFGeneratorTableViewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0306216F213BE1D200FCA5DD /* PDFGeneratorTableView */ = {
+			isa = PBXGroup;
+			children = (
+				03062170213BE1D200FCA5DD /* AppDelegate.swift */,
+				03062172213BE1D400FCA5DD /* Assets.xcassets */,
+				03062174213BE1D400FCA5DD /* MainMenu.xib */,
+				03062177213BE1D400FCA5DD /* Info.plist */,
+				03062178213BE1D400FCA5DD /* PDFGeneratorTableView.entitlements */,
+			);
+			path = PDFGeneratorTableView;
+			sourceTree = "<group>";
+		};
+		03062180213BE1D400FCA5DD /* PDFGeneratorTableViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				03062181213BE1D400FCA5DD /* PDFGeneratorTableViewTests.swift */,
+				03062183213BE1D400FCA5DD /* Info.plist */,
+			);
+			path = PDFGeneratorTableViewTests;
+			sourceTree = "<group>";
+		};
+		0306218B213BE1D400FCA5DD /* PDFGeneratorTableViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0306218C213BE1D400FCA5DD /* PDFGeneratorTableViewUITests.swift */,
+				0306218E213BE1D400FCA5DD /* Info.plist */,
+			);
+			path = PDFGeneratorTableViewUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0306216C213BE1D200FCA5DD /* PDFGeneratorTableView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03062191213BE1D400FCA5DD /* Build configuration list for PBXNativeTarget "PDFGeneratorTableView" */;
+			buildPhases = (
+				03062169213BE1D200FCA5DD /* Sources */,
+				0306216A213BE1D200FCA5DD /* Frameworks */,
+				0306216B213BE1D200FCA5DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PDFGeneratorTableView;
+			productName = PDFGeneratorTableView;
+			productReference = 0306216D213BE1D200FCA5DD /* PDFGeneratorTableView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0306217C213BE1D400FCA5DD /* PDFGeneratorTableViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03062194213BE1D400FCA5DD /* Build configuration list for PBXNativeTarget "PDFGeneratorTableViewTests" */;
+			buildPhases = (
+				03062179213BE1D400FCA5DD /* Sources */,
+				0306217A213BE1D400FCA5DD /* Frameworks */,
+				0306217B213BE1D400FCA5DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0306217F213BE1D400FCA5DD /* PBXTargetDependency */,
+			);
+			name = PDFGeneratorTableViewTests;
+			productName = PDFGeneratorTableViewTests;
+			productReference = 0306217D213BE1D400FCA5DD /* PDFGeneratorTableViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		03062187213BE1D400FCA5DD /* PDFGeneratorTableViewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03062197213BE1D400FCA5DD /* Build configuration list for PBXNativeTarget "PDFGeneratorTableViewUITests" */;
+			buildPhases = (
+				03062184213BE1D400FCA5DD /* Sources */,
+				03062185213BE1D400FCA5DD /* Frameworks */,
+				03062186213BE1D400FCA5DD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0306218A213BE1D400FCA5DD /* PBXTargetDependency */,
+			);
+			name = PDFGeneratorTableViewUITests;
+			productName = PDFGeneratorTableViewUITests;
+			productReference = 03062188213BE1D400FCA5DD /* PDFGeneratorTableViewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		03062165213BE1D200FCA5DD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = thierryH24;
+				TargetAttributes = {
+					0306216C213BE1D200FCA5DD = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					0306217C213BE1D400FCA5DD = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 0306216C213BE1D200FCA5DD;
+					};
+					03062187213BE1D400FCA5DD = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = 0306216C213BE1D200FCA5DD;
+					};
+				};
+			};
+			buildConfigurationList = 03062168213BE1D200FCA5DD /* Build configuration list for PBXProject "PDFGeneratorTableView" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 03062164213BE1D200FCA5DD;
+			productRefGroup = 0306216E213BE1D200FCA5DD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0306216C213BE1D200FCA5DD /* PDFGeneratorTableView */,
+				0306217C213BE1D400FCA5DD /* PDFGeneratorTableViewTests */,
+				03062187213BE1D400FCA5DD /* PDFGeneratorTableViewUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0306216B213BE1D200FCA5DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03062173213BE1D400FCA5DD /* Assets.xcassets in Resources */,
+				03062176213BE1D400FCA5DD /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0306217B213BE1D400FCA5DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03062186213BE1D400FCA5DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		03062169213BE1D200FCA5DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03062171213BE1D200FCA5DD /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03062179213BE1D400FCA5DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03062182213BE1D400FCA5DD /* PDFGeneratorTableViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		03062184213BE1D400FCA5DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0306218D213BE1D400FCA5DD /* PDFGeneratorTableViewUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0306217F213BE1D400FCA5DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0306216C213BE1D200FCA5DD /* PDFGeneratorTableView */;
+			targetProxy = 0306217E213BE1D400FCA5DD /* PBXContainerItemProxy */;
+		};
+		0306218A213BE1D400FCA5DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0306216C213BE1D200FCA5DD /* PDFGeneratorTableView */;
+			targetProxy = 03062189213BE1D400FCA5DD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		03062174213BE1D400FCA5DD /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03062175213BE1D400FCA5DD /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0306218F213BE1D400FCA5DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		03062190213BE1D400FCA5DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		03062192213BE1D400FCA5DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PDFGeneratorTableView/PDFGeneratorTableView.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PDFGeneratorTableView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thierry24100..PDFGeneratorTableView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		03062193213BE1D400FCA5DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PDFGeneratorTableView/PDFGeneratorTableView.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PDFGeneratorTableView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thierry24100..PDFGeneratorTableView;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		03062195213BE1D400FCA5DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PDFGeneratorTableViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thierry24100..PDFGeneratorTableViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PDFGeneratorTableView.app/Contents/MacOS/PDFGeneratorTableView";
+			};
+			name = Debug;
+		};
+		03062196213BE1D400FCA5DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PDFGeneratorTableViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thierry24100..PDFGeneratorTableViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PDFGeneratorTableView.app/Contents/MacOS/PDFGeneratorTableView";
+			};
+			name = Release;
+		};
+		03062198213BE1D400FCA5DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PDFGeneratorTableViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thierry24100..PDFGeneratorTableViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = PDFGeneratorTableView;
+			};
+			name = Debug;
+		};
+		03062199213BE1D400FCA5DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = PDFGeneratorTableViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.thierry24100..PDFGeneratorTableViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = PDFGeneratorTableView;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03062168213BE1D200FCA5DD /* Build configuration list for PBXProject "PDFGeneratorTableView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0306218F213BE1D400FCA5DD /* Debug */,
+				03062190213BE1D400FCA5DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03062191213BE1D400FCA5DD /* Build configuration list for PBXNativeTarget "PDFGeneratorTableView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03062192213BE1D400FCA5DD /* Debug */,
+				03062193213BE1D400FCA5DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03062194213BE1D400FCA5DD /* Build configuration list for PBXNativeTarget "PDFGeneratorTableViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03062195213BE1D400FCA5DD /* Debug */,
+				03062196213BE1D400FCA5DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03062197213BE1D400FCA5DD /* Build configuration list for PBXNativeTarget "PDFGeneratorTableViewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03062198213BE1D400FCA5DD /* Debug */,
+				03062199213BE1D400FCA5DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 03062165213BE1D200FCA5DD /* Project object */;
+}
