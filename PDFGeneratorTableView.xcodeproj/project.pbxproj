@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03048A522146CBE10060C90B /* MainWindowPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03048A512146CBE10060C90B /* MainWindowPrint.swift */; };
 		03062171213BE1D200FCA5DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03062170213BE1D200FCA5DD /* AppDelegate.swift */; };
 		03062173213BE1D400FCA5DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03062172213BE1D400FCA5DD /* Assets.xcassets */; };
 		03062176213BE1D400FCA5DD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03062174213BE1D400FCA5DD /* MainMenu.xib */; };
@@ -15,6 +16,10 @@
 		0306219B213BE1F300FCA5DD /* PDFManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306219A213BE1F300FCA5DD /* PDFManager.swift */; };
 		0306219E213BE22700FCA5DD /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0306219C213BE22700FCA5DD /* MainWindowController.swift */; };
 		0306219F213BE22700FCA5DD /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0306219D213BE22700FCA5DD /* MainWindowController.xib */; };
+		031B68CF214ED93A002A531F /* PrintFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031B68CD214ED93A002A531F /* PrintFormController.swift */; };
+		031B68D0214ED93A002A531F /* PrintFormController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 031B68CE214ED93A002A531F /* PrintFormController.xib */; };
+		036B849A2154B35A007A525B /* MyPrintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036B84992154B35A007A525B /* MyPrintView.swift */; };
+		036ED8FA2156028400ECE4A7 /* MyPrintViewOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036ED8F92156028400ECE4A7 /* MyPrintViewOutline.swift */; };
 		03E57B8D213C41F300F9C4CA /* PDFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E57B8C213C41F300F9C4CA /* PDFConstants.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03048A512146CBE10060C90B /* MainWindowPrint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowPrint.swift; sourceTree = "<group>"; };
 		0306216D213BE1D200FCA5DD /* PDFGeneratorTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDFGeneratorTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03062170213BE1D200FCA5DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03062172213BE1D400FCA5DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +57,10 @@
 		0306219A213BE1F300FCA5DD /* PDFManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFManager.swift; sourceTree = "<group>"; };
 		0306219C213BE22700FCA5DD /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		0306219D213BE22700FCA5DD /* MainWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
+		031B68CD214ED93A002A531F /* PrintFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintFormController.swift; sourceTree = "<group>"; };
+		031B68CE214ED93A002A531F /* PrintFormController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrintFormController.xib; sourceTree = "<group>"; };
+		036B84992154B35A007A525B /* MyPrintView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPrintView.swift; sourceTree = "<group>"; };
+		036ED8F92156028400ECE4A7 /* MyPrintViewOutline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPrintViewOutline.swift; sourceTree = "<group>"; };
 		03E57B8C213C41F300F9C4CA /* PDFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,13 +114,18 @@
 			children = (
 				03062170213BE1D200FCA5DD /* AppDelegate.swift */,
 				03062172213BE1D400FCA5DD /* Assets.xcassets */,
-				03E57B8C213C41F300F9C4CA /* PDFConstants.swift */,
-				0306219A213BE1F300FCA5DD /* PDFManager.swift */,
+				03062177213BE1D400FCA5DD /* Info.plist */,
 				03062174213BE1D400FCA5DD /* MainMenu.xib */,
 				0306219C213BE22700FCA5DD /* MainWindowController.swift */,
 				0306219D213BE22700FCA5DD /* MainWindowController.xib */,
-				03062177213BE1D400FCA5DD /* Info.plist */,
+				03048A512146CBE10060C90B /* MainWindowPrint.swift */,
+				036B84992154B35A007A525B /* MyPrintView.swift */,
+				036ED8F92156028400ECE4A7 /* MyPrintViewOutline.swift */,
+				03E57B8C213C41F300F9C4CA /* PDFConstants.swift */,
 				03062178213BE1D400FCA5DD /* PDFGeneratorTableView.entitlements */,
+				0306219A213BE1F300FCA5DD /* PDFManager.swift */,
+				031B68CD214ED93A002A531F /* PrintFormController.swift */,
+				031B68CE214ED93A002A531F /* PrintFormController.xib */,
 			);
 			path = PDFGeneratorTableView;
 			sourceTree = "<group>";
@@ -143,6 +158,7 @@
 				03062169213BE1D200FCA5DD /* Sources */,
 				0306216A213BE1D200FCA5DD /* Frameworks */,
 				0306216B213BE1D200FCA5DD /* Resources */,
+				0391EDB8214A51AA00F84424 /* Unusued */,
 			);
 			buildRules = (
 			);
@@ -243,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03062173213BE1D400FCA5DD /* Assets.xcassets in Resources */,
+				031B68D0214ED93A002A531F /* PrintFormController.xib in Resources */,
 				0306219F213BE22700FCA5DD /* MainWindowController.xib in Resources */,
 				03062176213BE1D400FCA5DD /* MainMenu.xib in Resources */,
 			);
@@ -264,15 +281,40 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0391EDB8214A51AA00F84424 /* Unusued */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Unusued;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nfile=\"unused.rb\"\nif [ -f \"$file\" ]\nthen\necho \"$file found.\"\nruby unused.rb xcode\nelse\necho \"unused.rb doesn't exist\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		03062169213BE1D200FCA5DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036B849A2154B35A007A525B /* MyPrintView.swift in Sources */,
 				03E57B8D213C41F300F9C4CA /* PDFConstants.swift in Sources */,
+				031B68CF214ED93A002A531F /* PrintFormController.swift in Sources */,
 				0306219B213BE1F300FCA5DD /* PDFManager.swift in Sources */,
 				03062171213BE1D200FCA5DD /* AppDelegate.swift in Sources */,
+				03048A522146CBE10060C90B /* MainWindowPrint.swift in Sources */,
 				0306219E213BE22700FCA5DD /* MainWindowController.swift in Sources */,
+				036ED8FA2156028400ECE4A7 /* MyPrintViewOutline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +479,7 @@
 		03062192213BE1D400FCA5DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = PDFGeneratorTableView;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PDFGeneratorTableView/Info.plist;
@@ -454,7 +496,7 @@
 		03062193213BE1D400FCA5DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = PDFGeneratorTableView;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PDFGeneratorTableView/Info.plist;

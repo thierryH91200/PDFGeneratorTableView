@@ -316,11 +316,11 @@ class TabularPDFPage: BasePDFPage{
             
             //draw the vertical lines
             let fromPoint = NSMakePoint(
-                leftMargin + (columnsArray[i]["cumul"] as! CGFloat),
+                leftMargin + (columnsArray[i]["offsetX"] as! CGFloat),
                 self.pdfHeight - topMargin )
             
             let toPoint = NSMakePoint(
-                leftMargin + (columnsArray[i]["cumul"] as! CGFloat),
+                leftMargin + (columnsArray[i]["offsetX"] as! CGFloat),
                 bottomMargin
             )
             drawLine(fromPoint, toPoint: toPoint)
@@ -349,6 +349,5 @@ class TabularPDFPage: BasePDFPage{
         self.drawVerticalGrids()
         self.drawHorizontalGrids()
     }
-    
-    
+
 }
