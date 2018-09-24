@@ -16,6 +16,8 @@ class MainWindowController: NSWindowController {
     
     @IBOutlet weak var tableViewBinding: NSTableView!
     @IBOutlet var tableView: NSTableView!
+    @IBOutlet weak var outlineView: NSOutlineView!
+    
     
     @IBOutlet weak var infoLabel: NSTextField!
     
@@ -24,10 +26,9 @@ class MainWindowController: NSWindowController {
     @IBOutlet var mainWindow: NSWindow!
     @IBOutlet weak var view: NSView!
     
-    @IBOutlet weak var outlineView: NSOutlineView!
     
     var data = [Person]()
-        
+    
     var creatures = [Creatures]()
     
     let aPDFDocument = PDFDocument()
@@ -45,18 +46,22 @@ class MainWindowController: NSWindowController {
         
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
         data = dataArray()
-
+        
         for dat in data {
             let d = dat.convertIntoDict()
             datas.append(d)
         }
-
-        let creatureDict = ["Animals": ["Cat", "Dog", "Horse"],
-                            "Birds":   ["Eagle", "Hawk"],
-                            "Fish":    ["Cod", "Mackeral", "Salmon", "Tilapia"]]
         
+        let creatureDict = ["Animals": [["Cat", "12"],["Dog","22"], ["Horse", "33"]],
+                            "Birds":   [["Eagle", "Hawk"]],
+                            "Birds1":   [["Eagle", "Hawk"]],
+                            "Fish":    [["Cod", "Mackeral"], ["Salmon", "Tilapia"]]]
+        
+        var ot = [Others]()
         for (type, things) in creatureDict {
-            let aCreatureList = Creatures(type: type, things: things)
+            let thing = Others(name: "Cat", things: "12")
+            ot.append(thing)
+            let aCreatureList = Creatures(type: type, other: ot)
             creatures.append(aCreatureList)
         }
         
@@ -64,7 +69,7 @@ class MainWindowController: NSWindowController {
         outlineView.delegate = self
         
         outlineView.expandItem(nil, expandChildren: true)
-
+        
         
         // set up sorting
         let ageDescriptor = NSSortDescriptor(key: "age", ascending: true)
@@ -128,7 +133,7 @@ class MainWindowController: NSWindowController {
         arr.append(Person.createPerson(fName: "Jane", lName: "eeff", age: "55"))
         return arr
     }
-
+    
     @IBAction func printAction(_ sender: Any) {
         
         var headerLine = ""
@@ -158,15 +163,15 @@ class MainWindowController: NSWindowController {
             myPrintView = MyPrintViewTable(tableView: tableView, andHeader: headerLine)
         case "Outline":
             headerLine = "My printed Outline View"
-            myPrintView = MyPrintViewTable(tableView: tableView, andHeader: headerLine)
+            myPrintView = MyPrintViewOutline(tableView: outlineView, andHeader: headerLine)
         case "Table Binding":
             headerLine = "My printed Table Binding View"
             myPrintView = MyPrintViewTable(tableView: tableViewBinding, andHeader: headerLine)
-
+            
         default:
             headerLine = "My printed Table View"
             myPrintView = MyPrintViewTable(tableView: tableView, andHeader: headerLine)
-
+            
         }
         
         let printOperation = NSPrintOperation(view: myPrintView, printInfo: printInfo)
@@ -237,9 +242,11 @@ extension MainWindowController: NSOutlineViewDataSource {
     // root node otherwise we find and return the child of the parent node indicated by 'item'
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
+        
         if let creatures = item as? Creatures {
-            return creatures.things[index]
+            return creatures.other[index]
         }
+        print(creatures[index])
         return creatures[index]
     }
     
@@ -248,7 +255,7 @@ extension MainWindowController: NSOutlineViewDataSource {
     // (i.e. it doesn't)
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
         if let creatures = item as? Creatures {
-            return creatures.things.count >  0
+            return creatures.other.count >  0
         }
         return false
     }
@@ -256,11 +263,33 @@ extension MainWindowController: NSOutlineViewDataSource {
     
     // Tell the view how many children an item has
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        if let creatures = item as? Creatures {
-            return creatures.things.count
+        if item == nil  {
+            print(creatures.count)
+            return creatures.count
         }
-        return creatures.count
+        
+        if let folder = item as? Creatures {
+            print("folder.other.count", folder.other.count)
+            return folder.other.count
+        }
+        return 0
     }
+    
+    // indicates whether a given row should be drawn in the “group row” style.
+    public func outlineView(_ outlineView: NSOutlineView, isGroupItem item: Any) -> Bool
+    {
+        return isSourceGroupItem(item)
+    }
+    
+    func isSourceGroupItem(_ item: Any) -> Bool
+    {
+        if item is Creatures {
+            return true
+        }
+        return false
+    }
+
+
 }
 
 
@@ -269,28 +298,74 @@ extension MainWindowController: NSOutlineViewDelegate {
     // use the 'type' attribute otherwise we downcast it to a string and use that instead.
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
         
+        var cellView: NSTableCellView?
         var text = ""
+        
         if let creatures = item as? Creatures {
             text = creatures.type
+            let cellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "FeedCellHeader"), owner: self) as? KSHeaderCellView
+            cellView!.textField!.stringValue = text
+            cellView!.fillColor = NSColor.green
+
+//            print("cellView", tableColumn!.identifier.rawValue, text)
+            return cellView
+            
         }
         else {
-            text = item as! String
+            if let item1 = item as? Others {
+                
+                let identifier = tableColumn!.identifier
+                
+                if identifier.rawValue == "name"
+                {
+                    cellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "FeedCell"), owner: self) as? NSTableCellView
+                    text = (item1.name)
+                    
+                    cellView!.textField!.stringValue = text                    
+                    return cellView
+
+                }
+                else
+                {
+                    cellView = outlineView.makeView(withIdentifier: identifier, owner: self) as? NSTableCellView
+                }
+
+                text = item1.things
+
+//                cellView!.textField!.stringValue = text
+//                print(text)
+//
+//                return cellView
+
+            }
+            
         }
+        print(text)
+
+        return cellView
+
         
-        // Create our table cell -- note the reference to 'creatureCell' that we set when configuring the table cell
-        let tableCell = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "creatureCell"), owner: self) as! NSTableCellView
-        tableCell.textField!.stringValue = text
-        return tableCell
     }
+}
+
+class Others {
+    var name = ""
+    var things = ""
+    
+    init(name: String, things: String) {
+        self.name = name
+        self.things = things
+    }
+    
 }
 
 class Creatures {
     var type: String
-    var things: [String]
+    var other: [Others]
     
-    init(type: String, things: [String]) {
+    init(type: String, other: [Others]) {
         self.type = type
-        self.things = things
+        self.other = other
     }
 }
 
@@ -317,5 +392,21 @@ class Creatures {
         return dict
     }
 }
+
+final class KSHeaderCellView: NSTableCellView {
+    
+    var fillColor = NSColor.clear
+    
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        
+        let bPath = NSBezierPath(rect: dirtyRect)
+        
+        fillColor.set()
+        bPath.fill()
+    }
+}
+
+
 
 
