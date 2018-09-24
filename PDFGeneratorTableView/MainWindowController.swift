@@ -36,7 +36,6 @@ class MainWindowController: NSWindowController {
     @objc var datas = [[String: Any]]()
     var columnInformation = [[String: Any]]()
     
-    
     override var windowNibName: NSNib.Name? {
         return  "MainWindowController"
     }
@@ -45,36 +44,13 @@ class MainWindowController: NSWindowController {
         super.windowDidLoad()
         
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-        
         data = dataArray()
 
-        datas.append(["givenName": "Noah", "familyName": "Vale", "age": "72"] )
-        datas.append(["givenName": "Sarah", "familyName": "Yayvo", "age": "29"])
-        datas.append(["givenName": "Shanda", "familyName": "Lear", "age": "45"])
-        datas.append(["givenName": "Heidi", "familyName": "Clare", "age": "45"])
-        datas.append(["givenName": "Helen", "familyName": "Back", "age": "45"])
-        datas.append(["givenName": "Jack", "familyName": "Haas", "age": "33"])
-        datas.append(["givenName": "Justin", "familyName": "Case", "age": "32"])
-        datas.append(["givenName": "Ophelia", "familyName": "Payne", "age": "44"])
-        datas.append(["givenName": "Justin", "familyName": "Case", "age": "54"])
-        datas.append(["givenName": "Paige", "familyName": "Turner", "age": "55"])
-        datas.append(["givenName": "Rick", "familyName": "O'Shea", "age": "65"])
-        datas.append(["givenName": "Rick", "familyName": "Shaw", "age": "23"])
-        datas.append(["givenName": "Sal", "familyName": "Minella", "age": "11"])
-        datas.append(["givenName": "Seth", "familyName": "Poole", "age": "25"])
-        datas.append(["givenName": "Russell", "familyName": "Leeves", "age": "33"])
-        datas.append(["givenName": "Sonny", "familyName": "Day", "age": "76"])
-        datas.append(["givenName": "Stan", "familyName": "Still", "age": "69"])
-        datas.append(["givenName": "Stanley", "familyName": "Cupp", "age": "65"])
-        datas.append(["givenName": "Sue", "familyName": "Flay", "age": "54"])
-        datas.append(["givenName": "Tim", "familyName": "Burr", "age": "51"])
-        datas.append(["givenName": "Tommy", "familyName": "Hawk", "age": "27"])
-        datas.append(["givenName": "Warren", "familyName": "Peese", "age": "38"])
-        datas.append(["givenName": "Sue", "familyName": "Scheph", "age": "41"])
-        datas.append(["givenName": "Will", "familyName": "Power", "age": "42"])
-        datas.append(["givenName": "Woody", "familyName": "Forrest", "age": "62"])
-        datas.append(["givenName": "X.", "familyName": "Benedict", "age": "88"])
-        
+        for dat in data {
+            let d = dat.convertIntoDict()
+            datas.append(d)
+        }
+
         let creatureDict = ["Animals": ["Cat", "Dog", "Horse"],
                             "Birds":   ["Eagle", "Hawk"],
                             "Fish":    ["Cod", "Mackeral", "Salmon", "Tilapia"]]
@@ -86,6 +62,8 @@ class MainWindowController: NSWindowController {
         
         outlineView.dataSource = self
         outlineView.delegate = self
+        
+        outlineView.expandItem(nil, expandChildren: true)
 
         
         // set up sorting
@@ -317,7 +295,7 @@ class Creatures {
 }
 
 
-@objc class Person:NSObject{
+@objc class Person:NSObject {
     @objc var givenName  = ""
     @objc var familyName = ""
     @objc var age        = ""
@@ -330,5 +308,14 @@ class Creatures {
         return person
         
     }
+    
+    func convertIntoDict() -> Dictionary<String, String> {
+        var dict = Dictionary<String, String>()
+        dict["givenName"] = self.givenName
+        dict["familyName"] = self.familyName
+        dict["age"] = self.age
+        return dict
+    }
 }
+
 

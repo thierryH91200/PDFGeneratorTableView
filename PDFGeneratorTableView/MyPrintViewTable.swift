@@ -12,16 +12,18 @@ import AppKit
 class MyPrintViewTable: NSView
 {
     weak var tableToPrint: NSTableView?
+    
     var header = ""
     var attributes: [NSAttributedString.Key : Any] = [:]
+    
     var listFont = NSFont(name: "Helvetica", size: 10.0)
-    var headerHeight: CGFloat = 0.0
-    var footerHeight: CGFloat = 0.0
-    var lineHeight: CGFloat = 0.0
-    var entryHeight: CGFloat = 0.0
-    var pageRect = NSRect.zero
-    var linesPerPage: Int = 0
-    var currentPage: Int = 0
+    var headerHeight : CGFloat = 0.0
+    var footerHeight : CGFloat = 0.0
+    var lineHeight   : CGFloat = 0.0
+    var entryHeight  : CGFloat = 0.0
+    var pageRect               = NSRect.zero
+    var linesPerPage           = 0
+    var currentPage            = 0
     
     override  var printJobTitle : String {
         return ""
@@ -49,11 +51,11 @@ class MyPrintViewTable: NSView
     
     // MARK: Pagination
     override func knowsPageRange(_ range: NSRangePointer) -> Bool {
-        let printInfo: NSPrintInfo? = NSPrintOperation.current?.printInfo
+        
+        let printInfo = NSPrintOperation.current?.printInfo
         pageRect = (printInfo?.imageablePageBounds)!
  
-        var newFrame = NSRect()
-        newFrame.origin = NSPoint.zero
+        var newFrame = NSRect.zero
         newFrame.size = printInfo?.paperSize ?? CGSize.zero
         self.frame = newFrame
         
@@ -97,23 +99,23 @@ class MyPrintViewTable: NSView
         NSBezierPath.defaultLineWidth = 0.25
         
         var originalWidth: CGFloat = 0
-        for col in tableToPrint!.tableColumns {
-            originalWidth += col.width
+        for column in tableToPrint!.tableColumns {
+            originalWidth += column.width
         }
         let widthQuotient = (pageRect.size.width - margin) / originalWidth
         let inset = (entryHeight - lineHeight - 1.0) / 2.0
         
         // Column titles
         var horizontalOffset: CGFloat = 0
-        for col in tableToPrint!.tableColumns {
+        for column in tableToPrint!.tableColumns {
             
             let headerRect = NSMakeRect(
                 leftMargin + horizontalOffset,
                 topMargin,
-                widthQuotient * col.width,
+                widthQuotient * column.width,
                 entryHeight)
             
-            horizontalOffset += widthQuotient * col.width
+            horizontalOffset += widthQuotient * column.width
             
             let bpath = NSBezierPath(rect: headerRect)
             NSColor.red.setFill()
@@ -123,7 +125,7 @@ class MyPrintViewTable: NSView
             bpath.stroke()
             bpath.close()
             
-            let columnTitle = col.title
+            let columnTitle = column.title
             columnTitle.draw(in: NSInsetRect(headerRect, inset, inset), withAttributes: attributes)
         }
         
@@ -135,7 +137,7 @@ class MyPrintViewTable: NSView
             let row = firstEntryOfPage + i
             var horizontalOffset: CGFloat = 0
             var numCol = 0
-            for col in tableToPrint!.tableColumns {
+            for column in tableToPrint!.tableColumns {
                 
                 var valueAsStr = ""
                 
@@ -144,25 +146,22 @@ class MyPrintViewTable: NSView
                 let color = (tableCellView.textField?.textColor)!
                 attributes[.foregroundColor] = color
 
-                let rect: NSRect = NSMakeRect(
+                let rect = NSMakeRect(
                     leftMargin + horizontalOffset,
                     topMargin + CGFloat(i + 1) * entryHeight,
-                    widthQuotient * col.width,
+                    widthQuotient * column.width,
                     entryHeight)
                 
-                horizontalOffset += widthQuotient * col.width
+                horizontalOffset += widthQuotient * column.width
                 
                 // Now we can finally draw the entry
-                let bpath = NSBezierPath(rect: rect)
-//                NSColor.red.setFill()
-//                bpath.fill()
+                let bezierPath = NSBezierPath(rect: rect)
                 
                 NSColor.black.set()
-                bpath.stroke()
-                bpath.close()
+                bezierPath.stroke()
+                bezierPath.close()
 
-//                NSBezierPath.stroke(rect)
-                let stringRect: NSRect = NSInsetRect(rect, inset, inset)
+                let stringRect = NSInsetRect(rect, inset, inset)
                 valueAsStr.draw(in: stringRect, withAttributes: attributes)
                 
                 numCol += 1

@@ -9,10 +9,7 @@
 import AppKit
 import Quartz
 
-
-
 extension MainWindowController {
-    
     
     @IBAction func generatePDF (_ sender:NSButton) {
         
@@ -118,8 +115,6 @@ extension MainWindowController {
         
         pdfView.removeFromSuperview()
     }
-    
 
-    
 }
 
