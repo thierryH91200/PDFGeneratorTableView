@@ -60,7 +60,7 @@ class MyPrintViewOutline: NSView
         for column in tableToPrint!.tableColumns {
             originalWidth += column.width
         }
-        widthQuotient = (pageRect.size.width - 20.0) / originalWidth
+        widthQuotient = (pageRect.size.width - margin) / originalWidth
         
         attributes = [NSAttributedString.Key.font: listFont!]
     }
