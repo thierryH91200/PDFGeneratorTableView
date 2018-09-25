@@ -264,12 +264,10 @@ extension MainWindowController: NSOutlineViewDataSource {
     // Tell the view how many children an item has
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if item == nil  {
-            print(creatures.count)
             return creatures.count
         }
         
         if let folder = item as? Creatures {
-            print("folder.other.count", folder.other.count)
             return folder.other.count
         }
         return 0
@@ -306,8 +304,6 @@ extension MainWindowController: NSOutlineViewDelegate {
             let cellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "FeedCellHeader"), owner: self) as? KSHeaderCellView
             cellView!.textField!.stringValue = text
             cellView!.fillColor = NSColor.green
-
-//            print("cellView", tableColumn!.identifier.rawValue, text)
             return cellView
             
         }
@@ -335,16 +331,12 @@ extension MainWindowController: NSOutlineViewDelegate {
 //                cellView!.textField!.stringValue = text
 //                print(text)
 //
-//                return cellView
+                return cellView
 
             }
             
         }
-        print(text)
-
         return cellView
-
-        
     }
 }
 

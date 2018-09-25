@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PDFGeneratorTableView/MainWindowController.swift"
-            timestampString = "559502462.584336"
+            timestampString = "559542338.379806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
             endingLineNumber = "55"
-            landmarkName = "windowDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PDFGeneratorTableView/MainWindowController.swift"
-            timestampString = "559502462.584589"
+            timestampString = "559542338.379881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
             endingLineNumber = "68"
-            landmarkName = "windowDidLoad()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PDFGeneratorTableView/MainWindowController.swift"
-            timestampString = "559502462.5846519"
+            timestampString = "559542338.3799191"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "315"
             endingLineNumber = "315"
-            landmarkName = "outlineView(_:viewFor:item:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PDFGeneratorTableView/MainWindowController.swift"
-            timestampString = "559502462.584708"
+            timestampString = "559542338.379952"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "319"
             endingLineNumber = "319"
-            landmarkName = "outlineView(_:viewFor:item:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,13 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PDFGeneratorTableView/MainWindowController.swift"
-            timestampString = "559502462.58476"
+            timestampString = "559542338.379982"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "305"
             endingLineNumber = "305"
-            landmarkName = "outlineView(_:viewFor:item:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,13 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PDFGeneratorTableView/MainWindowController.swift"
-            timestampString = "559502462.584811"
+            timestampString = "559542338.380012"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "246"
             endingLineNumber = "246"
-            landmarkName = "outlineView(_:child:ofItem:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -106,13 +106,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PDFGeneratorTableView/MainWindowController.swift"
-            timestampString = "559502462.584861"
+            timestampString = "559542338.380041"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "266"
             endingLineNumber = "266"
-            landmarkName = "outlineView(_:numberOfChildrenOfItem:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -122,13 +122,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PDFGeneratorTableView/MainWindowController.swift"
-            timestampString = "559502462.584909"
+            timestampString = "559542338.380079"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "306"
             endingLineNumber = "306"
-            landmarkName = "outlineView(_:viewFor:item:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -154,7 +154,7 @@
                   moduleName = "PDFGeneratorTableView"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/thierryh24/Documents/Developpements/NSTextField/PDFGeneratorTableView/PDFGeneratorTableView/MyPrintViewTable.swift"
-                  timestampString = "559502463.044481"
+                  timestampString = "559542343.891522"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "146"
@@ -169,7 +169,7 @@
                   moduleName = "PDFGeneratorTableView"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/thierryh24/Documents/Developpements/NSTextField/PDFGeneratorTableView/PDFGeneratorTableView/MyPrintViewTable.swift"
-                  timestampString = "559502463.047316"
+                  timestampString = "559542343.89351"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "146"
