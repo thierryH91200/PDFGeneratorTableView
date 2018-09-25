@@ -25,6 +25,14 @@ class MyPrintViewOutline: NSView
     var linesPerPage           = 0
     var currentPage            = 0
     
+    var leftMargin : CGFloat = 0
+    var topMargin : CGFloat = 0
+    var numberOfRows = 0
+    
+    let margin: CGFloat = 20
+    
+    var  widthQuotient : CGFloat = 0
+
     override  var printJobTitle : String {
         return ""
     }
@@ -34,13 +42,25 @@ class MyPrintViewOutline: NSView
         super.init(frame: NSMakeRect(0, 0, 700, 700))
         
         self.tableToPrint = tableToPrint
+        
+
         self.header = header!
         listFont = NSFont(name: "Helvetica", size: 10.0)
         
         lineHeight = listFont!.boundingRectForFont.size.height
         entryHeight = listFont!.capHeight * 3
-        headerHeight = 20 + entryHeight
-        footerHeight = 20
+        headerHeight = margin + entryHeight
+        footerHeight = margin
+        
+        leftMargin = pageRect.origin.x + margin
+        topMargin = pageRect.origin.y + headerHeight
+        numberOfRows = tableToPrint!.numberOfRows
+        
+        var originalWidth: CGFloat = 0
+        for column in tableToPrint!.tableColumns {
+            originalWidth += column.width
+        }
+        widthQuotient = (pageRect.size.width - 20.0) / originalWidth
         
         attributes = [NSAttributedString.Key.font: listFont!]
     }
@@ -93,16 +113,8 @@ class MyPrintViewOutline: NSView
     // This is where the drawing takes place
     override func draw(_ dirtyRect: NSRect) {
         
-        let margin: CGFloat = 20
-        let leftMargin = pageRect.origin.x + margin
-        let topMargin = pageRect.origin.y + headerHeight
         NSBezierPath.defaultLineWidth = 0.1
         
-        var originalWidth: CGFloat = 0
-        for column in tableToPrint!.tableColumns {
-            originalWidth += column.width
-        }
-        let widthQuotient = (pageRect.size.width - margin) / originalWidth
         let inset = (entryHeight - lineHeight - 1.0) / 2.0
         
         // Column titles
@@ -171,81 +183,80 @@ class MyPrintViewOutline: NSView
                     valueAsStr.draw(in: stringRect, withAttributes: attributes)
                 }
                 else
-                
-                if let tableCellView = tableToPrint?.view(atColumn: numCol, row: row, makeIfNecessary: true) as? NSTableCellView {
-                    valueAsStr = (tableCellView.textField?.stringValue)!
-                    let color = (tableCellView.textField?.textColor)!
-                    attributes[.foregroundColor] = color
                     
-//                    let bg = tableCellView.fillcolor
-                    
-                    let rect = NSMakeRect(
-                        leftMargin + horizontalOffset,
-                        topMargin + CGFloat(i + 1) * entryHeight,
-                        widthQuotient * column.width,
-                        entryHeight)
-                    
-                    horizontalOffset += widthQuotient * column.width
-                    
-                    // Now we can finally draw the entry
-                    let bezierPath = NSBezierPath(rect: rect)
-                    
-                    NSColor.lightGray.set()
-                    bezierPath.stroke()
-                    bezierPath.close()
-                    
-                    let stringRect = NSInsetRect(rect, inset, inset)
-                    valueAsStr.draw(in: stringRect, withAttributes: attributes)
+                    if let tableCellView = tableToPrint?.view(atColumn: numCol, row: row, makeIfNecessary: true) as? NSTableCellView {
+                        valueAsStr = (tableCellView.textField?.stringValue)!
+                        let color = (tableCellView.textField?.textColor)!
+                        attributes[.foregroundColor] = color
+                        
+                        //                    let bg = tableCellView.fillcolor
+                        
+                        let rect = NSMakeRect(
+                            leftMargin + horizontalOffset,
+                            topMargin + CGFloat(i + 1) * entryHeight,
+                            widthQuotient * column.width,
+                            entryHeight)
+                        
+                        horizontalOffset += widthQuotient * column.width
+                        
+                        // Now we can finally draw the entry
+                        let bezierPath = NSBezierPath(rect: rect)
+                        
+                        NSColor.lightGray.set()
+//                        bezierPath.stroke()
+                        bezierPath.close()
+                        
+                        let stringRect = NSInsetRect(rect, inset, inset)
+                        valueAsStr.draw(in: stringRect, withAttributes: attributes)
                 }
                 
                 numCol += 1
             }
         }
+        drawVerticalGrids()
+        drawHorizontalGrids()
     }
     
-    //    func drawVerticalGrids(){
-    //
-    //        var originalWidth: CGFloat = 0
-    //        for column in tableToPrint!.tableColumns {
-    //            originalWidth += column.width
-    //        }
-    //        let widthQuotient = (pageRect.size.width - 20.0) / originalWidth
-    //
-    //        let columns = tableToPrint!.tableColumns
-    //        for i in 0..<columns.count {
-    //
-    //            //draw the vertical lines
-    //            let fromPoint = NSMakePoint(
-    //                leftMargin + widthQuotient * columns[i].width ,
-    //                topMargin )
-    //
-    //            let toPoint = NSMakePoint(
-    //                leftMargin + widthQuotient * columns[i].width ,
-    //                bottomMargin
-    //            )
-    //            drawLine(fromPoint, toPoint: toPoint)
-    //        }
-    //    }
-    //
-    //    func drawHorizontalGrids(){
-    //        let rowCount = self.dataArray.count
-    //        for i in 0...rowCount {
-    //            let fromPoint = NSMakePoint(
-    //                leftMargin ,
-    //                self.pdfHeight - topMargin - verticalPadding - defaultRowHeight - (CGFloat(i) * defaultRowHeight)
-    //            )
-    //            let toPoint = NSMakePoint(
-    //                self.pdfWidth - rightMargin,
-    //                self.pdfHeight - topMargin - verticalPadding - defaultRowHeight - (CGFloat(i) * defaultRowHeight)
-    //            )
-    //            drawLine(fromPoint, toPoint: toPoint)
-    //        }
-    //
-    //    }
+    func drawVerticalGrids(){
+        
+        
+        let columns = tableToPrint!.tableColumns
+        var offsetX : CGFloat = 0.0
+        for i in 0..<columns.count {
+            
+            //draw the vertical lines
+            offsetX += widthQuotient * columns[i].width
+            let fromPoint = NSMakePoint(
+                leftMargin + offsetX ,
+                topMargin + entryHeight )
+            
+            let toPoint = NSMakePoint(
+                leftMargin + offsetX ,
+                topMargin + (CGFloat(numberOfRows) + 1 ) * entryHeight )
+            
+            drawLine(fromPoint, toPoint: toPoint)
+        }
+    }
+    
+    func drawHorizontalGrids() {
+        
+        for i in 0...numberOfRows {
+            let fromPoint = NSMakePoint(
+                leftMargin ,
+                topMargin + entryHeight + (CGFloat(i) * entryHeight)
+            )
+            let toPoint = NSMakePoint(
+                leftMargin + pageRect.size.width , //- rightMargin,
+                topMargin + entryHeight + (CGFloat(i) * entryHeight)
+            )
+            drawLine(fromPoint, toPoint: toPoint)
+        }
+        
+    }
     
     func drawLine( _ fromPoint:NSPoint,  toPoint:NSPoint){
         let path = NSBezierPath()
-        NSColor.lightGray.set()
+        NSColor.black.set()
         path.move(to: fromPoint)
         path.line(to: toPoint)
         path.lineWidth = 0.5
