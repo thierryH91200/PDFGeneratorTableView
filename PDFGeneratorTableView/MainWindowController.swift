@@ -18,7 +18,6 @@ class MainWindowController: NSWindowController {
     @IBOutlet var tableView: NSTableView!
     @IBOutlet weak var outlineView: NSOutlineView!
     
-    
     @IBOutlet weak var infoLabel: NSTextField!
     
     @IBOutlet var arrayController: NSArrayController!
@@ -59,8 +58,11 @@ class MainWindowController: NSWindowController {
         
         var ot = [Others]()
         for (type, things) in creatureDict {
-            let thing = Others(name: "Cat", things: "12")
-            ot.append(thing)
+            ot.removeAll()
+            for thing in things {
+                let data = Others(name: thing[0], things: thing[1])
+                ot.append(data)
+            }
             let aCreatureList = Creatures(type: type, other: ot)
             creatures.append(aCreatureList)
         }
