@@ -43,7 +43,6 @@ class MyPrintViewOutline: NSView
         
         self.tableToPrint = tableToPrint
         
-
         self.header = header!
         listFont = NSFont(name: "Helvetica", size: 10.0)
         
@@ -56,11 +55,6 @@ class MyPrintViewOutline: NSView
         topMargin = pageRect.origin.y + headerHeight
         numberOfRows = tableToPrint!.numberOfRows
         
-        var originalWidth: CGFloat = 0
-        for column in tableToPrint!.tableColumns {
-            originalWidth += column.width
-        }
-        widthQuotient = (pageRect.size.width - margin) / originalWidth
         
         attributes = [NSAttributedString.Key.font: listFont!]
     }
@@ -115,6 +109,13 @@ class MyPrintViewOutline: NSView
         
         NSBezierPath.defaultLineWidth = 0.1
         
+        var originalWidth: CGFloat = 0
+        for column in tableToPrint!.tableColumns {
+            originalWidth += column.width
+        }
+        widthQuotient = (pageRect.size.width - margin) / originalWidth
+
+        
         let inset = (entryHeight - lineHeight - 1.0) / 2.0
         
         // Column titles
@@ -158,7 +159,7 @@ class MyPrintViewOutline: NSView
                     let color = (tableCellView.textField?.textColor)!
                     attributes[.foregroundColor] = color
                     
-                    //                    let bg = tableCellView.fillcolor
+                    let fillColor = tableCellView.fillColor
                     
                     let rect = NSMakeRect(
                         leftMargin + horizontalOffset,
@@ -172,7 +173,7 @@ class MyPrintViewOutline: NSView
                     let bezierPath = NSBezierPath(rect: rect)
                     
                     
-                    NSColor.green.set()
+                    fillColor.set()
                     bezierPath.fill()
                     
                     NSColor.lightGray.set()
@@ -246,7 +247,7 @@ class MyPrintViewOutline: NSView
                 topMargin + entryHeight + (CGFloat(i) * entryHeight)
             )
             let toPoint = NSMakePoint(
-                leftMargin + pageRect.size.width , //- rightMargin,
+                leftMargin + pageRect.size.width - rightMargin,
                 topMargin + entryHeight + (CGFloat(i) * entryHeight)
             )
             drawLine(fromPoint, toPoint: toPoint)

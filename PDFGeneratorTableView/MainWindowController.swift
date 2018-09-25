@@ -304,7 +304,7 @@ extension MainWindowController: NSOutlineViewDelegate {
             text = creatures.type
             let cellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "FeedCellHeader"), owner: self) as? KSHeaderCellView
             cellView!.textField!.stringValue = text
-            cellView!.fillColor = NSColor.green
+            cellView!.fillColor = NSColor.lightGray
             return cellView
             
         }

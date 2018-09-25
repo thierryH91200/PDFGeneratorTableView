@@ -9,7 +9,7 @@
 
 import AppKit
 
-class MyPrintViewTable: NSView
+class MyPrintView: NSView
 {
     weak var tableToPrint: NSTableView?
     
