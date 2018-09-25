@@ -113,16 +113,16 @@
 		0306216F213BE1D200FCA5DD /* PDFGeneratorTableView */ = {
 			isa = PBXGroup;
 			children = (
-				03337FCB2159516600860796 /* MyPrintViewOutline.swift */,
 				03062170213BE1D200FCA5DD /* AppDelegate.swift */,
 				03062172213BE1D400FCA5DD /* Assets.xcassets */,
 				03062177213BE1D400FCA5DD /* Info.plist */,
-				03337FC92158FCC200860796 /* Node.swift */,
 				03062174213BE1D400FCA5DD /* MainMenu.xib */,
 				0306219C213BE22700FCA5DD /* MainWindowController.swift */,
 				0306219D213BE22700FCA5DD /* MainWindowController.xib */,
 				0356BAEB2157DA0A009A9397 /* MainWindowControllerPDF.swift */,
+				03337FCB2159516600860796 /* MyPrintViewOutline.swift */,
 				036B84992154B35A007A525B /* MyPrintViewTable.swift */,
+				03337FC92158FCC200860796 /* Node.swift */,
 				03E57B8C213C41F300F9C4CA /* PDFConstants.swift */,
 				03062178213BE1D400FCA5DD /* PDFGeneratorTableView.entitlements */,
 				0306219A213BE1F300FCA5DD /* PDFManager.swift */,

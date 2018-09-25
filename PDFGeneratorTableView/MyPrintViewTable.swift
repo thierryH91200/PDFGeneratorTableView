@@ -141,8 +141,6 @@ class MyPrintViewTable: NSView
                 
                 var valueAsStr = ""
                 
-                let w = column.width
-                
                 let tableCellView = tableToPrint?.view(atColumn: numCol, row: row, makeIfNecessary: true) as! NSTableCellView
                 valueAsStr = (tableCellView.textField?.stringValue)!
                 let color = (tableCellView.textField?.textColor)!

@@ -51,8 +51,6 @@ extension MainWindowController {
         
         let pageWidth = offsetX + leftMargin + rightMargin
         let pageHeight = topMargin + verticalPadding + (CGFloat(numberOfRowsPerPage + 1) * defaultRowHeight) + verticalPadding + bottomMargin
-        let rap = pageWidth / pageHeight
-        print(rap)
         
         var numberOfPages = self.datas.count / numberOfRowsPerPage
         

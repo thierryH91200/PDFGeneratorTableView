@@ -246,7 +246,6 @@ extension MainWindowController: NSOutlineViewDataSource {
         if let creatures = item as? Creatures {
             return creatures.other[index]
         }
-        print(creatures[index])
         return creatures[index]
     }
     
@@ -328,7 +327,7 @@ extension MainWindowController: NSOutlineViewDelegate {
 
                 text = item1.things
 
-//                cellView!.textField!.stringValue = text
+                cellView!.textField!.stringValue = text
 //                print(text)
 //
                 return cellView
@@ -360,7 +359,6 @@ class Creatures {
         self.other = other
     }
 }
-
 
 @objc class Person:NSObject {
     @objc var givenName  = ""

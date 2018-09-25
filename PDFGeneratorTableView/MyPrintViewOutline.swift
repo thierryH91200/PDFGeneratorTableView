@@ -141,10 +141,43 @@ class MyPrintViewOutline: NSView
                 
                 var valueAsStr = ""
                 
+                if let tableCellView = tableToPrint?.view(atColumn: numCol, row: row, makeIfNecessary: true) as? KSHeaderCellView {
+                    valueAsStr = (tableCellView.textField?.stringValue)!
+                    let color = (tableCellView.textField?.textColor)!
+                    attributes[.foregroundColor] = color
+                    
+                    //                    let bg = tableCellView.fillcolor
+                    
+                    let rect = NSMakeRect(
+                        leftMargin + horizontalOffset,
+                        topMargin + CGFloat(i + 1) * entryHeight,
+                        (pageRect.size.width - margin) ,
+                        entryHeight)
+                    
+                    horizontalOffset += widthQuotient * column.width
+                    
+                    // Now we can finally draw the entry
+                    let bezierPath = NSBezierPath(rect: rect)
+                    
+                    
+                    NSColor.green.set()
+                    bezierPath.fill()
+                    
+                    NSColor.lightGray.set()
+                    bezierPath.stroke()
+                    bezierPath.close()
+                    
+                    let stringRect = NSInsetRect(rect, inset, inset)
+                    valueAsStr.draw(in: stringRect, withAttributes: attributes)
+                }
+                else
+                
                 if let tableCellView = tableToPrint?.view(atColumn: numCol, row: row, makeIfNecessary: true) as? NSTableCellView {
                     valueAsStr = (tableCellView.textField?.stringValue)!
                     let color = (tableCellView.textField?.textColor)!
                     attributes[.foregroundColor] = color
+                    
+//                    let bg = tableCellView.fillcolor
                     
                     let rect = NSMakeRect(
                         leftMargin + horizontalOffset,
