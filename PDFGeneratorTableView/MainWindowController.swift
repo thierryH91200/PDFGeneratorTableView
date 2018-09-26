@@ -330,8 +330,6 @@ extension MainWindowController: NSOutlineViewDelegate {
                 text = item1.things
 
                 cellView!.textField!.stringValue = text
-//                print(text)
-//
                 return cellView
 
             }
