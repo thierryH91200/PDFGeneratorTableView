@@ -77,10 +77,10 @@ class MyPrintViewOutline: NSView
         linesPerPage = Int((pageRect.size.height - headerHeight - footerHeight) / entryHeight - CGFloat(1))
         
         // Number of full pages
-        var noPages: Int = tableToPrint!.numberOfRows / linesPerPage
+        var noPages: Int = numberOfRows / linesPerPage
         
         // Rest of lines on last page
-        if tableToPrint!.numberOfRows % linesPerPage > 0 {
+        if numberOfRows % linesPerPage > 0 {
             noPages += 1
         }
         range.pointee.location = 1
@@ -154,7 +154,23 @@ class MyPrintViewOutline: NSView
                 
                 var valueAsStr = ""
                 
+                // Header ???
                 if let tableCellView = tableToPrint?.view(atColumn: numCol, row: row, makeIfNecessary: true) as? KSHeaderCellView {
+                    
+                    let rectDis = NSMakeRect(
+                        leftMargin + horizontalOffset + 3,
+                        topMargin + CGFloat(i + 1) * entryHeight + 3,
+                        13 ,
+                        13)
+                    
+                    let center = CGPoint(x: rectDis.midX, y: rectDis.midY)
+                    let side = rectDis.width
+                    let bezierPathDis = trainglePathWithCenter(center: center, side: side)
+                    
+                    bezierPathDis.stroke()
+                    bezierPathDis.fill()
+                    bezierPathDis.close()
+
                     valueAsStr = (tableCellView.textField?.stringValue)!
                     let color = (tableCellView.textField?.textColor)!
                     attributes[.foregroundColor] = color
@@ -162,17 +178,15 @@ class MyPrintViewOutline: NSView
                     let fillColor = tableCellView.fillColor
                     
                     let rect = NSMakeRect(
-                        leftMargin + horizontalOffset,
+                        leftMargin + horizontalOffset + 20 ,
                         topMargin + CGFloat(i + 1) * entryHeight,
-                        (pageRect.size.width - margin) ,
+                        (pageRect.size.width - margin - 20 ) ,
                         entryHeight)
                     
                     horizontalOffset += widthQuotient * column.width
                     
                     // Now we can finally draw the entry
                     let bezierPath = NSBezierPath(rect: rect)
-                    
-                    
                     fillColor.set()
                     bezierPath.fill()
                     
@@ -189,8 +203,6 @@ class MyPrintViewOutline: NSView
                         valueAsStr = (tableCellView.textField?.stringValue)!
                         let color = (tableCellView.textField?.textColor)!
                         attributes[.foregroundColor] = color
-                        
-                        //                    let bg = tableCellView.fillcolor
                         
                         let rect = NSMakeRect(
                             leftMargin + horizontalOffset,
@@ -218,8 +230,23 @@ class MyPrintViewOutline: NSView
         drawHorizontalGrids()
     }
     
-    func drawVerticalGrids(){
+    func trainglePathWithCenter(center: CGPoint, side: CGFloat) -> NSBezierPath {
+        let path = NSBezierPath()
         
+        let startX = center.x - side / 2
+        let startY = center.y - side / 2
+        
+        path.move(to: CGPoint(x: startX, y: startY))
+        path.line(to: CGPoint(x: startX + side, y: startY ))
+        path.line(to: CGPoint(x: startX + side/2, y: startY + side))
+        path.close()
+        
+        return path
+    }
+    
+
+    
+    func drawVerticalGrids(){
         
         let columns = tableToPrint!.tableColumns
         var offsetX : CGFloat = 0.0
@@ -257,7 +284,7 @@ class MyPrintViewOutline: NSView
     
     func drawLine( _ fromPoint:NSPoint,  toPoint:NSPoint){
         let path = NSBezierPath()
-        NSColor.black.set()
+        NSColor.lightGray.set()
         path.move(to: fromPoint)
         path.line(to: toPoint)
         path.lineWidth = 0.5
