@@ -47,7 +47,7 @@ class MyPrintViewOutline: NSView
         listFont = NSFont(name: "Helvetica", size: 10.0)
         
         lineHeight = listFont!.boundingRectForFont.size.height
-        entryHeight = listFont!.capHeight * 3
+        entryHeight = listFont!.capHeight * 2.5
         headerHeight = margin + entryHeight
         footerHeight = margin
         
@@ -150,6 +150,7 @@ class MyPrintViewOutline: NSView
             let row = firstEntryOfPage + i
             var horizontalOffset: CGFloat = 0
             var numCol = 0
+            
             for column in tableToPrint!.tableColumns {
                 
                 var valueAsStr = ""
@@ -158,10 +159,10 @@ class MyPrintViewOutline: NSView
                 if let tableCellView = tableToPrint?.view(atColumn: numCol, row: row, makeIfNecessary: true) as? KSHeaderCellView {
                     
                     let rectDis = NSMakeRect(
-                        leftMargin + horizontalOffset + 3,
-                        topMargin + CGFloat(i + 1) * entryHeight + 3,
-                        13 ,
-                        13)
+                        leftMargin + horizontalOffset,
+                        topMargin + CGFloat(i + 1) * entryHeight + 4,
+                        8 ,
+                        8)
                     
                     let center = CGPoint(x: rectDis.midX, y: rectDis.midY)
                     let side = rectDis.width
@@ -178,9 +179,9 @@ class MyPrintViewOutline: NSView
                     let fillColor = tableCellView.fillColor
                     
                     let rect = NSMakeRect(
-                        leftMargin + horizontalOffset + 20 ,
+                        leftMargin + horizontalOffset + 10 ,
                         topMargin + CGFloat(i + 1) * entryHeight,
-                        (pageRect.size.width - margin - 20 ) ,
+                        (pageRect.size.width - margin - 10 ) ,
                         entryHeight)
                     
                     horizontalOffset += widthQuotient * column.width
@@ -205,19 +206,12 @@ class MyPrintViewOutline: NSView
                         attributes[.foregroundColor] = color
                         
                         let rect = NSMakeRect(
-                            leftMargin + horizontalOffset,
+                            leftMargin + horizontalOffset + 16,
                             topMargin + CGFloat(i + 1) * entryHeight,
                             widthQuotient * column.width,
                             entryHeight)
                         
                         horizontalOffset += widthQuotient * column.width
-                        
-                        // Now we can finally draw the entry
-                        let bezierPath = NSBezierPath(rect: rect)
-                        
-                        NSColor.lightGray.set()
-//                        bezierPath.stroke()
-                        bezierPath.close()
                         
                         let stringRect = NSInsetRect(rect, inset, inset)
                         valueAsStr.draw(in: stringRect, withAttributes: attributes)
@@ -284,7 +278,7 @@ class MyPrintViewOutline: NSView
     
     func drawLine( _ fromPoint:NSPoint,  toPoint:NSPoint){
         let path = NSBezierPath()
-        NSColor.lightGray.set()
+        NSColor.gridColor.set()
         path.move(to: fromPoint)
         path.line(to: toPoint)
         path.lineWidth = 0.5
