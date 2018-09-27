@@ -53,7 +53,14 @@ class MainWindowController: NSWindowController {
         
         let creatureDict = ["Animals": [["Cat", "12"],["Dog","22"], ["Horse", "33"]],
                             "Birds":   [["Eagle", "Hawk"]],
-                            "Birds1":   [["Eagle", "Hawk"]],
+                            "Birds1":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
+                            "Birds2":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
+                            "Birds3":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
+                            "Birds4":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
+                            "Birds5":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
+                            "Birds6":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
+                            "Birds7":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
+                            "Birds8":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
                             "Fish":    [["Cod", "Mackeral"], ["Salmon", "Tilapia"]]]
         
         var ot = [Others]()
