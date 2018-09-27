@@ -173,7 +173,6 @@ class MainWindowController: NSWindowController {
         default:
             headerLine = "My printed Table View"
             myPrintView = MyPrintViewTable(tableView: tableView, andHeader: headerLine)
-            
         }
         
         let printOperation = NSPrintOperation(view: myPrintView, printInfo: printInfo)
@@ -288,9 +287,7 @@ extension MainWindowController: NSOutlineViewDataSource {
         return false
     }
 
-
 }
-
 
 extension MainWindowController: NSOutlineViewDelegate {
     // Add text to the view. 'item' will either be a Creature object or a string. If it's the former we just
