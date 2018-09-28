@@ -285,7 +285,7 @@ class MyPrintViewOutline: NSView
     
     func drawLine( _ fromPoint:NSPoint,  toPoint:NSPoint){
         let path = NSBezierPath()
-        NSColor.black.set()
+        NSColor.gray.set()
         path.move(to: fromPoint)
         path.line(to: toPoint)
         path.lineWidth = 0.5
