@@ -25,12 +25,12 @@ class MyPrintViewOutline: NSView
     var linesPerPage           = 0
     var currentPage            = 0
     
-    var rightMargin = CGFloat(20.0)
-    let bottomMargin = CGFloat (40.0)
+    var rightMargin          = CGFloat(20.0)
+    let bottomMargin         = CGFloat (40.0)
     var leftMargin : CGFloat = 0
-    var topMargin : CGFloat = 0
-    var numberOfRows = 0
-    var numberOfRowsByPage = 0
+    var topMargin  : CGFloat = 0
+    var numberOfRows         = 0
+    var numberOfRowsByPage   = 0
 
     let margin: CGFloat = 20
     
@@ -57,7 +57,6 @@ class MyPrintViewOutline: NSView
         leftMargin = pageRect.origin.x + margin
         topMargin = pageRect.origin.y + headerHeight
         numberOfRows = tableToPrint!.numberOfRows
-        
         
         attributes = [NSAttributedString.Key.font: listFont!]
     }
