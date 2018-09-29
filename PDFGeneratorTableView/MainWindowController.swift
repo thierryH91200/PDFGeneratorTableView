@@ -25,7 +25,6 @@ class MainWindowController: NSWindowController {
     @IBOutlet var mainWindow: NSWindow!
     @IBOutlet weak var view: NSView!
     
-    
     var data = [Person]()
     
     var creatures = [Creatures]()
@@ -63,14 +62,14 @@ class MainWindowController: NSWindowController {
                             "Birds8":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
                             "Fish":    [["Cod", "Mackeral"], ["Salmon", "Tilapia"]]]
         
-        var ot = [Others]()
+        var other = [Others]()
         for (type, things) in creatureDict {
-            ot.removeAll()
+            other.removeAll()
             for thing in things {
                 let data = Others(name: thing[0], things: thing[1])
-                ot.append(data)
+                other.append(data)
             }
-            let aCreatureList = Creatures(type: type, other: ot)
+            let aCreatureList = Creatures(type: type, other: other)
             creatures.append(aCreatureList)
         }
         
@@ -236,7 +235,6 @@ extension MainWindowController: NSTableViewDelegate {
                     cellView.textField?.textColor = NSColor.black
                     return cellView
                 }
-                
                 return cellView
             }
         }
@@ -308,7 +306,7 @@ extension MainWindowController: NSOutlineViewDelegate {
             text = creatures.type
             let cellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "FeedCellHeader"), owner: self) as? KSHeaderCellView
             cellView!.textField!.stringValue = text
-            cellView!.fillColor = NSColor.lightGray
+            cellView!.fillColor = NSColor.clear
             return cellView
             
         }
@@ -316,30 +314,23 @@ extension MainWindowController: NSOutlineViewDelegate {
             if let item1 = item as? Others {
                 
                 let identifier = tableColumn!.identifier
-                
                 if identifier.rawValue == "name"
                 {
                     cellView = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "FeedCell"), owner: self) as? NSTableCellView
                     text = (item1.name)
-                    
                     cellView!.textField!.stringValue = text                    
                     return cellView
-
                 }
                 else
                 {
                     cellView = outlineView.makeView(withIdentifier: identifier, owner: self) as? NSTableCellView
+                    text = item1.things
+                    cellView!.textField!.stringValue = text
+                    return cellView
                 }
-
-                text = item1.things
-
-                cellView!.textField!.stringValue = text
-                return cellView
-
             }
-            
         }
-        return cellView
+        return nil
     }
 }
 
