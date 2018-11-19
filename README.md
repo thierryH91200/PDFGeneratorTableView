@@ -1,11 +1,11 @@
 # PDFGeneratorTableView
 
-there are very few examples to print an nstableview
+there are very few examples to print an nstableview. examples are uncommon
 
-how generate PDF
+- how generate PDF
 
-how print nstableview
+- how print nstableview
 
-examples are uncommon
+
 
 ![alt tag](https://github.com/thierryH91200/PDFGeneratorTableView/blob/master/screenshots/CaptureEcran1.png)
