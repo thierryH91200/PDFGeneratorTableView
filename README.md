@@ -1,5 +1,7 @@
 # PDFGeneratorTableView
 
+there are very few examples to print an nstableview
+
 how generate PDF
 
 how print nstableview
