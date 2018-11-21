@@ -4,7 +4,8 @@ there are very few examples to print an nstableview. examples are uncommon
 
 - how generate PDF
 
-- how print nstableview
+- how print NSTableView
+- how print NSOutlineView
 
 
 
