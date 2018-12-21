@@ -6,7 +6,7 @@
 //  Copyright © 2018 thierryH24. All rights reserved.
 //
 
-import Cocoa
+import AppKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -18,15 +18,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
         
-        initializeLibraryAndShowMainWindow()
-
+        initializeMainWindow()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
     
-    func initializeLibraryAndShowMainWindow() {
+    func initializeMainWindow() {
         
         mainWindowController = MainWindowController()
         mainWindowController?.showWindow(self)
@@ -36,10 +35,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
         return true
     }
-
     
-
-
-
 }
 

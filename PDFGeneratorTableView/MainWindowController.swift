@@ -88,9 +88,10 @@ class MainWindowController: NSWindowController {
                                                    ascending: true,
                                                    selector: #selector(NSString.localizedCaseInsensitiveCompare(_:)))
         
-        tableView.tableColumns[0].sortDescriptorPrototype = givenNameDescriptor
-        tableView.tableColumns[1].sortDescriptorPrototype = familyNameDescriptor
-        tableView.tableColumns[2].sortDescriptorPrototype = ageDescriptor
+        tableView.sortDescriptors = [givenNameDescriptor, familyNameDescriptor, ageDescriptor]
+//        tableView.tableColumns[1].sortDescriptorPrototype = familyNameDescriptor
+//        tableView.tableColumns[2].sortDescriptorPrototype = ageDescriptor
+
         
         tableView.reloadData()
         
@@ -207,7 +208,6 @@ extension MainWindowController: NSTableViewDataSource {
     func numberOfRows(in aTableView: NSTableView) -> Int {
         return data.count
     }
-    
 }
 
 // MARK: - NSTableViewDelegate
@@ -235,7 +235,6 @@ extension MainWindowController: NSTableViewDelegate {
                     cellView.textField?.textColor = NSColor.black
                     return cellView
                 }
-                return cellView
             }
         }
         return nil
@@ -355,10 +354,10 @@ class Creatures {
     }
 }
 
-@objc class Person:NSObject {
-    @objc var givenName  = ""
-    @objc var familyName = ""
-    @objc var age        = ""
+@objcMembers class Person:NSObject {
+    var givenName  = ""
+    var familyName = ""
+    var age        = ""
     
     class func createPerson(fName:String, lName:String, age: String)->Person{
         let person        = Person()
@@ -380,7 +379,7 @@ class Creatures {
 
 final class KSHeaderCellView: NSTableCellView {
     
-    var fillColor = NSColor.clear
+    var fillColor = NSColor.lightGray
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

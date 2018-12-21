@@ -45,8 +45,8 @@ class BasePDFPage :PDFPage{
         var headerFontAttributes = [NSAttributedString.Key: Any]()
         headerFontAttributes = [
             .font: headerFont ?? NSFont.labelFont(ofSize: 12),
-            NSAttributedString.Key.paragraphStyle :headerParagraphStyle,
-            NSAttributedString.Key.foregroundColor : NSColor.lightGray
+            .paragraphStyle :headerParagraphStyle,
+            .foregroundColor : NSColor.lightGray
         ]
         let headerRect = NSMakeRect(headerTextX, headerTextY, headerTextWidth, headerTextHeight)
         self.headerText.draw(in: headerRect, withAttributes: headerFontAttributes)

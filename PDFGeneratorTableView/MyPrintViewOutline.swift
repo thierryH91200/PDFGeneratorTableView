@@ -20,7 +20,7 @@ class MyPrintViewOutline: NSView
     var headerHeight : CGFloat = 0.0
     var footerHeight : CGFloat = 0.0
     var lineHeight   : CGFloat = 0.0
-    var rowHeight  : CGFloat = 0.0
+    var entryHeight  : CGFloat = 0.0
     var pageRect               = NSRect.zero
     var linesPerPage           = 0
     var currentPage            = 0
@@ -50,8 +50,8 @@ class MyPrintViewOutline: NSView
         listFont = NSFont(name: "Helvetica", size: 10.0)
         
         lineHeight = listFont!.boundingRectForFont.size.height
-        rowHeight = listFont!.capHeight * 2.5
-        headerHeight = margin + rowHeight
+        entryHeight = listFont!.capHeight * 2.5
+        headerHeight = margin + entryHeight
         footerHeight = margin
         
         leftMargin = pageRect.origin.x + margin
@@ -76,7 +76,7 @@ class MyPrintViewOutline: NSView
         self.frame = newFrame
         
         // Number of lines per page
-        linesPerPage = Int((pageRect.size.height - headerHeight - footerHeight) / rowHeight - CGFloat(1))
+        linesPerPage = Int((pageRect.size.height - headerHeight - footerHeight) / entryHeight - CGFloat(1))
         
         // Number of full pages
         var noPages: Int = numberOfRows / linesPerPage
@@ -117,8 +117,7 @@ class MyPrintViewOutline: NSView
         }
         widthQuotient = (pageRect.size.width - margin) / originalWidth
 
-        
-        let inset = (rowHeight - lineHeight - 1.0) / 2.0
+        let inset = (entryHeight - lineHeight - 1.0) / 2.0
         
         // Column titles
         var horizontalOffset: CGFloat = 0
@@ -128,7 +127,7 @@ class MyPrintViewOutline: NSView
                 leftMargin + horizontalOffset,
                 topMargin,
                 widthQuotient * column.width,
-                rowHeight)
+                entryHeight)
             
             horizontalOffset += widthQuotient * column.width
             
@@ -153,7 +152,7 @@ class MyPrintViewOutline: NSView
             let row = firstEntryOfPage + i
             var horizontalOffset: CGFloat = 0
             var numCol = 0
-            var ofx : CGFloat = 16
+            var offsetX : CGFloat = 16
             
             for column in tableToPrint!.tableColumns {
                 
@@ -163,7 +162,7 @@ class MyPrintViewOutline: NSView
                 if let tableCellView = tableToPrint?.view(atColumn: numCol, row: row, makeIfNecessary: true) as? KSHeaderCellView {
                     
                     // draw triangle
-                    let rectDis = NSMakeRect( leftMargin + horizontalOffset, topMargin +  rowHeight * CGFloat(i + 1) + 4, 8 , 8)
+                    let rectDis = NSMakeRect( leftMargin + horizontalOffset, topMargin +  entryHeight * CGFloat(i + 1) + 4, 8 , 8)
                     
                     let center = CGPoint(x: rectDis.midX, y: rectDis.midY)
                     let side = rectDis.width
@@ -181,9 +180,9 @@ class MyPrintViewOutline: NSView
                     
                     let rect = NSMakeRect(
                         leftMargin + horizontalOffset + 10 ,
-                        topMargin + rowHeight * CGFloat(i + 1),
+                        topMargin + entryHeight * CGFloat(i + 1),
                         (pageRect.size.width - margin - 10 ) ,
-                        rowHeight)
+                        entryHeight)
                     
                     horizontalOffset += widthQuotient * column.width
                     
@@ -205,18 +204,18 @@ class MyPrintViewOutline: NSView
                         attributes[.foregroundColor] = (tableCellView.textField?.textColor)!
                         
                         let rect = NSMakeRect(
-                            leftMargin + horizontalOffset + ofx,
-                            topMargin +  rowHeight * CGFloat(i + 1),
+                            leftMargin + horizontalOffset + offsetX,
+                            topMargin +  entryHeight * CGFloat(i + 1),
                             widthQuotient * column.width - 2,
-                            rowHeight)
+                            entryHeight)
                         
                         horizontalOffset += widthQuotient * column.width
                         
                         let stringRect = NSInsetRect(rect, inset, inset)
                         valueAsStr.draw(in: stringRect, withAttributes: attributes)
                         
-                        if ofx == 16 {
-                            ofx = 2
+                        if offsetX == 16 {
+                            offsetX = 2
                         }
 
                 }
@@ -247,8 +246,8 @@ class MyPrintViewOutline: NSView
         let columns = tableToPrint!.tableColumns
         var offsetX : CGFloat = 0.0
         
-        var fromPoint = CGPoint(x : leftMargin, y: topMargin + rowHeight )
-        var toPoint   = CGPoint(x : leftMargin, y: topMargin + rowHeight * CGFloat(numberOfRowsByPage + 1 ))
+        var fromPoint = CGPoint(x : leftMargin, y: topMargin + entryHeight )
+        var toPoint   = CGPoint(x : leftMargin, y: topMargin + entryHeight * CGFloat(numberOfRowsByPage + 1 ))
         drawLine(fromPoint, toPoint: toPoint)
 
         for i in 0..<columns.count {
@@ -258,11 +257,11 @@ class MyPrintViewOutline: NSView
             //draw the vertical lines
             fromPoint = NSMakePoint(
                 leftMargin + offsetX ,
-                topMargin + rowHeight )
+                topMargin + entryHeight )
             
             toPoint = NSMakePoint(
                 leftMargin + offsetX ,
-                topMargin + rowHeight * CGFloat(numberOfRowsByPage + 1 ) )
+                topMargin + entryHeight * CGFloat(numberOfRowsByPage + 1 ) )
             
             drawLine(fromPoint, toPoint: toPoint)
         }
@@ -273,11 +272,11 @@ class MyPrintViewOutline: NSView
         for i in 0...numberOfRowsByPage {
             let fromPoint = NSMakePoint(
                 leftMargin ,
-                topMargin + rowHeight + (CGFloat(i) * rowHeight)
+                topMargin + entryHeight + (CGFloat(i) * entryHeight)
             )
             let toPoint = NSMakePoint(
                 leftMargin + pageRect.size.width - rightMargin,
-                topMargin + rowHeight + (CGFloat(i) * rowHeight)
+                topMargin + entryHeight + (CGFloat(i) * entryHeight)
             )
             drawLine(fromPoint, toPoint: toPoint)
         }
