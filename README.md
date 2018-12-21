@@ -1,7 +1,12 @@
 # PDFGeneratorTableView
 
-how generate PDF
+there are very few examples to print an nstableview. examples are uncommon
 
-how print nstableview
+- how generate PDF
+
+- how print NSTableView
+- how print NSOutlineView
+
+
 
 ![alt tag](https://github.com/thierryH91200/PDFGeneratorTableView/blob/master/screenshots/CaptureEcran1.png)
