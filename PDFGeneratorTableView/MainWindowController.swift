@@ -359,7 +359,7 @@ class Creatures {
     var familyName = ""
     var age        = ""
     
-    class func createPerson(fName:String, lName:String, age: String)->Person{
+    class func createPerson(fName: String, lName: String, age: String)->Person {
         let person        = Person()
         person.givenName  = fName
         person.familyName = lName

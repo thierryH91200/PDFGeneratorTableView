@@ -25,10 +25,11 @@ class MyPrintViewOutline: NSView
     var linesPerPage           = 0
     var currentPage            = 0
     
-    var rightMargin          = CGFloat(20.0)
-    let bottomMargin         = CGFloat (40.0)
+    var rightMargin : CGFloat = 20.0
+    let bottomMargin : CGFloat = 40.0
     var leftMargin : CGFloat = 0
     var topMargin  : CGFloat = 0
+    
     var numberOfRows         = 0
     var numberOfRowsByPage   = 0
 
@@ -58,7 +59,7 @@ class MyPrintViewOutline: NSView
         topMargin = pageRect.origin.y + headerHeight
         numberOfRows = tableToPrint!.numberOfRows
         
-        attributes = [NSAttributedString.Key.font: listFont!]
+        attributes = [.font: listFont!]
     }
     
     required init?(coder decoder: NSCoder) {
@@ -166,7 +167,7 @@ class MyPrintViewOutline: NSView
                     
                     let center = CGPoint(x: rectDis.midX, y: rectDis.midY)
                     let side = rectDis.width
-                    let bezierPathDis = trianglePathWithCenter(center: center, side: side)
+                    let bezierPathDis = trianglePath(center: center, side: side)
                     
                     bezierPathDis.stroke()
                     bezierPathDis.fill()
@@ -227,7 +228,7 @@ class MyPrintViewOutline: NSView
         }
     }
     
-    func trianglePathWithCenter(center: CGPoint, side: CGFloat) -> NSBezierPath {
+    func trianglePath(center: CGPoint, side: CGFloat) -> NSBezierPath {
         let path = NSBezierPath()
         
         let startX = center.x - side / 2
@@ -241,7 +242,7 @@ class MyPrintViewOutline: NSView
         return path
     }
     
-    func drawVerticalGrids(){
+    func drawVerticalGrids() {
         
         let columns = tableToPrint!.tableColumns
         var offsetX : CGFloat = 0.0
@@ -292,6 +293,3 @@ class MyPrintViewOutline: NSView
     }
 
 }
-
-
-

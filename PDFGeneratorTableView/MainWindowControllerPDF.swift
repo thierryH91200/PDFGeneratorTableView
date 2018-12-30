@@ -13,6 +13,11 @@ extension MainWindowController {
     
     @IBAction func generatePDF (_ sender:NSButton) {
         
+        for page in 0..<aPDFDocument.pageCount {
+            aPDFDocument.removePage(at: page)
+        }
+        
+        // Option
         let coverPage = CoverPDFPage(hasMargin: true,
                                      title: "This is the cover page title. Keep it short or keep it long",
                                      creditInformation: "Created By: github.com \r Sep 2018",
@@ -23,9 +28,6 @@ extension MainWindowController {
                                      hasPageNumber: true,
                                      pageNumber: 1)
         
-        for page in 0..<aPDFDocument.pageCount {
-            aPDFDocument.removePage(at: page)
-        }
         aPDFDocument.insert(coverPage, at: 0)
         
         let tableColumns = tableView.tableColumns
@@ -79,7 +81,7 @@ extension MainWindowController {
                                                  pdfData: pdfDataArray as [AnyObject],
                                                  columnArray: columnInformation as [AnyObject])
             
-            aPDFDocument.insert(tabularDataPDF, at: i+1)
+            aPDFDocument.insert(tabularDataPDF, at: i + 1)
         }
         
         let paths = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true)
@@ -89,7 +91,11 @@ extension MainWindowController {
         self.infoLabel.isHidden = false
         self.infoLabel.stringValue = "Document saved to: " + userDesktopDirectory
         
-        printDoc(aPDFDocument, using: window!)
+        let fileURL = URL(fileURLWithPath: userDesktopDirectory)
+        
+        SendEmail.send(fileURL: fileURL)
+        
+//        printDoc(aPDFDocument, using: window!)
     }
     
     func printDoc(_ pdfDocument: PDFDocument, using window: NSWindow) {
@@ -113,6 +119,16 @@ extension MainWindowController {
         
         pdfView.removeFromSuperview()
     }
+}
 
+class SendEmail: NSObject {
+    static func send(fileURL : URL) {
+        let service = NSSharingService(named: NSSharingService.Name.composeEmail)!
+        service.recipients = ["email@yourEmail.eu"]
+        service.subject = "Email Subject"
+        
+        let items: [Any] = ["see attachment", fileURL]
+        service.perform(withItems: items)
+    }
 }
 

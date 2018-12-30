@@ -45,7 +45,7 @@ class BasePDFPage :PDFPage{
         var headerFontAttributes = [NSAttributedString.Key: Any]()
         headerFontAttributes = [
             .font: headerFont ?? NSFont.labelFont(ofSize: 12),
-            .paragraphStyle :headerParagraphStyle,
+            .paragraphStyle : headerParagraphStyle,
             .foregroundColor : NSColor.lightGray
         ]
         let headerRect = NSMakeRect(headerTextX, headerTextY, headerTextWidth, headerTextHeight)
@@ -95,14 +95,13 @@ class BasePDFPage :PDFPage{
         
         let pageNumFontAttributes = [
             NSAttributedString.Key.font: pageNumFont ?? NSFont.labelFont(ofSize: 12),
-            .paragraphStyle :pageNumParagraphStyle,
+            .paragraphStyle: pageNumParagraphStyle,
             .foregroundColor: NSColor.darkGray
         ]
         
         let pageNumRect = NSMakeRect(pageNumTextX, pageNumTextY, pageNumTextWidth, pageNumTextHeight)
         let pageNumberStr = "\(self.pageNumber)"
         pageNumberStr.draw(in: pageNumRect, withAttributes: pageNumFontAttributes)
-        
     }
     
     override func bounds(for box: PDFDisplayBox) -> NSRect
@@ -114,13 +113,13 @@ class BasePDFPage :PDFPage{
         if hasPageNumber ==  true {
             self.drawPageNumbers()
         }
-        if hasMargin{
+        if hasMargin == true {
             self.drawMargins()
         }
         if headerText.count > 0 {
             self.drawHeader()
         }
-        if footerText.count > 0{
+        if footerText.count > 0 {
             self.drawFooter()
         }
     }
@@ -145,6 +144,7 @@ class BasePDFPage :PDFPage{
     
 }
 
+// option
 class CoverPDFPage: BasePDFPage{
     var pdfTitle = "Default PDF Title"
     var creditInformation = "Default Credit Information"
@@ -182,9 +182,9 @@ class CoverPDFPage: BasePDFPage{
         let titleParagraphStyle = NSMutableParagraphStyle()
         titleParagraphStyle.alignment = .center
         
-        let titleFontAttributes = [
-            NSAttributedString.Key.font: titleFont ?? NSFont.labelFont(ofSize: 12),
-            NSAttributedString.Key.paragraphStyle:titleParagraphStyle,
+        let titleFontAttributes : [NSAttributedString.Key: Any] = [
+            .font: titleFont ?? NSFont.labelFont(ofSize: 12),
+            .paragraphStyle: titleParagraphStyle,
             .foregroundColor: NSColor.blue
         ]
         
@@ -204,10 +204,10 @@ class CoverPDFPage: BasePDFPage{
         let creditParagraphStyle = NSMutableParagraphStyle()
         creditParagraphStyle.alignment = .center
         
-        let creditFontAttributes = [
-            NSAttributedString.Key.font: creditFont ?? NSFont.labelFont(ofSize: 12),
-            NSAttributedString.Key.paragraphStyle:creditParagraphStyle,
-            NSAttributedString.Key.foregroundColor: NSColor.darkGray
+        let creditFontAttributes : [NSAttributedString.Key: Any] = [
+            .font: creditFont ?? NSFont.labelFont(ofSize: 12),
+            .paragraphStyle: creditParagraphStyle,
+            .foregroundColor: NSColor.darkGray
         ]
         
         let creditRect = NSMakeRect(pdfCreditX, pdfCreditY, pdfCreditWidth, pdfCreditHeight)
@@ -261,7 +261,7 @@ class TabularPDFPage: BasePDFPage{
 
         let titleFontAttributes = [
             NSAttributedString.Key.font: titleFont ?? NSFont.labelFont(ofSize: 12),
-            NSAttributedString.Key.paragraphStyle:titleParagraphStyle,
+            NSAttributedString.Key.paragraphStyle: titleParagraphStyle,
             NSAttributedString.Key.foregroundColor: NSColor.gray
         ]
                 
@@ -294,8 +294,7 @@ class TabularPDFPage: BasePDFPage{
             let dataDict = self.dataArray[row]
             for column in 0  ..< keys.count {
                 
-                let key = keys[column] 
-                
+                let key = keys[column]
                 let dataText = dataDict[ key ] as! String
                 
                 let dataRect = NSMakeRect(

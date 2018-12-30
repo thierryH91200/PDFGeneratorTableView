@@ -42,7 +42,7 @@ class MyPrintViewTable: NSView
         headerHeight = 20 + entryHeight
         footerHeight = 20
         
-        attributes = [NSAttributedString.Key.font: listFont!]
+        attributes = [.font: listFont!]
     }
     
     required init?(coder decoder: NSCoder) {
