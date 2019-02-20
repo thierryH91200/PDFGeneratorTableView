@@ -21,7 +21,6 @@
 		0356BAEC2157DA0A009A9397 /* MainWindowControllerPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0356BAEB2157DA0A009A9397 /* MainWindowControllerPDF.swift */; };
 		036B849A2154B35A007A525B /* MyPrintViewTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036B84992154B35A007A525B /* MyPrintViewTable.swift */; };
 		03E57B8D213C41F300F9C4CA /* PDFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E57B8C213C41F300F9C4CA /* PDFConstants.swift */; };
-		03F14E7E215DFE330053F8B4 /* CaptureEcran1.png in Resources */ = {isa = PBXBuildFile; fileRef = 03F14E7D215DFE330053F8B4 /* CaptureEcran1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +62,6 @@
 		0356BAEB2157DA0A009A9397 /* MainWindowControllerPDF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowControllerPDF.swift; sourceTree = "<group>"; };
 		036B84992154B35A007A525B /* MyPrintViewTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPrintViewTable.swift; sourceTree = "<group>"; };
 		03E57B8C213C41F300F9C4CA /* PDFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFConstants.swift; sourceTree = "<group>"; };
-		03F14E7D215DFE330053F8B4 /* CaptureEcran1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CaptureEcran1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +152,6 @@
 		03F14E7F215DFED70053F8B4 /* screenshots */ = {
 			isa = PBXGroup;
 			children = (
-				03F14E7D215DFE330053F8B4 /* CaptureEcran1.png */,
 			);
 			path = screenshots;
 			sourceTree = "<group>";
@@ -272,7 +269,6 @@
 				03062173213BE1D400FCA5DD /* Assets.xcassets in Resources */,
 				0306219F213BE22700FCA5DD /* MainWindowController.xib in Resources */,
 				03337FCE215954D100860796 /* README.md in Resources */,
-				03F14E7E215DFE330053F8B4 /* CaptureEcran1.png in Resources */,
 				03062176213BE1D400FCA5DD /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,7 +306,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nfile=\"unused.rb\"\nif [ -f \"$file\" ]\nthen\necho \"$file found.\"\n# ruby unused.rb xcode\nelse\necho \"unused.rb doesn't exist\"\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# file=\"unused.rb\"\n# if [ -f \"$file\" ]\n# then\n# echo \"$file found.\"\n# ruby unused.rb xcode\n# else\n# echo \"unused.rb doesn't exist\"\n# fi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -431,6 +427,7 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -485,6 +482,7 @@
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

@@ -125,7 +125,7 @@ class SendEmail: NSObject {
     static func send(fileURL : URL) {
         let service = NSSharingService(named: NSSharingService.Name.composeEmail)!
         service.recipients = ["email@yourEmail.eu"]
-        service.subject = "Email Subject"
+        service.subject = "Send Pdf"
         
         let items: [Any] = ["see attachment", fileURL]
         service.perform(withItems: items)
