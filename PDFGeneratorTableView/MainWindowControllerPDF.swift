@@ -13,6 +13,8 @@ extension MainWindowController {
     
     @IBAction func generatePDF (_ sender:NSButton) {
         
+        print("hzello")
+        
         for page in 0..<aPDFDocument.pageCount {
             aPDFDocument.removePage(at: page)
         }
