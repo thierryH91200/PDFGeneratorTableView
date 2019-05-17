@@ -6,6 +6,7 @@ there are very few examples to print an nstableview. examples are uncommon
 
 - how print NSTableView
 - how print NSOutlineView
+- how send pdf mail
 
 
 
