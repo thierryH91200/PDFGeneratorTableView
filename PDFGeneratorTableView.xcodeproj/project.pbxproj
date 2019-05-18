@@ -24,7 +24,6 @@
 		036B849A2154B35A007A525B /* MyPrintViewTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036B84992154B35A007A525B /* MyPrintViewTable.swift */; };
 		03A6B742228E812A00148F22 /* MainWindowControllerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6B741228E812A00148F22 /* MainWindowControllerTableView.swift */; };
 		03A6B744228E819000148F22 /* MainWindowControllerOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6B743228E819000148F22 /* MainWindowControllerOutlineView.swift */; };
-		03E57B8D213C41F300F9C4CA /* PDFConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E57B8C213C41F300F9C4CA /* PDFConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +68,6 @@
 		036B84992154B35A007A525B /* MyPrintViewTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPrintViewTable.swift; sourceTree = "<group>"; };
 		03A6B741228E812A00148F22 /* MainWindowControllerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowControllerTableView.swift; sourceTree = "<group>"; };
 		03A6B743228E819000148F22 /* MainWindowControllerOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowControllerOutlineView.swift; sourceTree = "<group>"; };
-		03E57B8C213C41F300F9C4CA /* PDFConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +130,6 @@
 				03337FCB2159516600860796 /* MyPrintViewOutline.swift */,
 				036B84992154B35A007A525B /* MyPrintViewTable.swift */,
 				03337FC92158FCC200860796 /* Node.swift */,
-				03E57B8C213C41F300F9C4CA /* PDFConstants.swift */,
 				03062178213BE1D400FCA5DD /* PDFGeneratorTableView.entitlements */,
 				03A6B743228E819000148F22 /* MainWindowControllerOutlineView.swift */,
 				03A6B741228E812A00148F22 /* MainWindowControllerTableView.swift */,
@@ -343,7 +340,6 @@
 				03A6B744228E819000148F22 /* MainWindowControllerOutlineView.swift in Sources */,
 				03337FCC2159516600860796 /* MyPrintViewOutline.swift in Sources */,
 				0356BAEC2157DA0A009A9397 /* MainWindowControllerPDF.swift in Sources */,
-				03E57B8D213C41F300F9C4CA /* PDFConstants.swift in Sources */,
 				0306219B213BE1F300FCA5DD /* TabularPDFPage.swift in Sources */,
 				034517D722900820004B0A36 /* CoverPDFPage.swift in Sources */,
 				034517D5229007B7004B0A36 /* BasePDFPage.swift in Sources */,

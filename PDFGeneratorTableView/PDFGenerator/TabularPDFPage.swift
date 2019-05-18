@@ -13,7 +13,7 @@ class TabularPDFPage: BasePDFPage{
     
     var dataArray = [AnyObject]()
     var columnsArray = [AnyObject]()
-    var verticalPadding = CGFloat(10.0)
+//    var verticalPadding = CGFloat(10.0)
     
     init(hasMargin:Bool,
          headerText:String,
@@ -39,12 +39,19 @@ class TabularPDFPage: BasePDFPage{
     
     override func draw(with box: PDFDisplayBox, to context: CGContext) {
         super.draw(with: box, to: context)
+        
+        context.saveGState()
+        let cx = NSGraphicsContext(cgContext: context, flipped: false)
+        NSGraphicsContext.saveGraphicsState()
+        NSGraphicsContext.current = cx
+
         self.drawTableData()
         self.drawVerticalGrids()
         self.drawHorizontalGrids()
+        
+        NSGraphicsContext.restoreGraphicsState()
+        context.restoreGState()
     }
-    
-
     
     func drawTableData(){
         

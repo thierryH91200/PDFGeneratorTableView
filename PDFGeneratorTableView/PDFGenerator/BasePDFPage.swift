@@ -21,6 +21,18 @@ class BasePDFPage :PDFPage{
     var pdfHeight = CGFloat(1024.0) //This is configurable
     var pdfWidth = CGFloat(768.0)   //This is configurable and is calculated based on the number of columns
     
+    let defaultRowHeight  = CGFloat(23.0)
+    let defaultColumnWidth = CGFloat(150.0)
+    let numberOfRowsPerPage = 60
+    
+    let topMargin = CGFloat(40.0)
+    let leftMargin = CGFloat(20.0)
+    let rightMargin = CGFloat(20.0)
+    let bottomMargin = CGFloat (40.0)
+    let textInset = CGFloat(5.0)
+    let verticalPadding = CGFloat (10.0)
+
+    
     init(hasMargin:Bool,
          headerText:String,
          footerText:String,
@@ -40,6 +52,13 @@ class BasePDFPage :PDFPage{
     }
     
     override func draw(with box: PDFDisplayBox, to context: CGContext)  {
+        
+        context.saveGState()
+        let cx = NSGraphicsContext(cgContext: context, flipped: false)
+        NSGraphicsContext.saveGraphicsState()
+        NSGraphicsContext.current = cx
+
+        
         if hasPageNumber ==  true {
             self.drawPageNumbers()
         }
@@ -52,6 +71,10 @@ class BasePDFPage :PDFPage{
         if footerText.count > 0 {
             self.drawFooter()
         }
+        
+        NSGraphicsContext.restoreGraphicsState()
+        context.restoreGState()
+
     }
     
     override func bounds(for box: PDFDisplayBox) -> NSRect
@@ -59,7 +82,7 @@ class BasePDFPage :PDFPage{
         return NSRect(x: 0, y: 0, width: pdfWidth, height: pdfHeight)
     }
 
-    func drawLine( _ fromPoint:NSPoint,  toPoint:NSPoint){
+    func drawLine( _ fromPoint : NSPoint, toPoint : NSPoint){
         let path = NSBezierPath()
         NSColor.lightGray.set()
         path.move(to: fromPoint)

@@ -10,8 +10,6 @@ import AppKit
 import Quartz
 
 
-
-
 // option
 class CoverPDFPage: BasePDFPage{
     var pdfTitle = "Default PDF Title"
@@ -39,10 +37,20 @@ class CoverPDFPage: BasePDFPage{
         self.creditInformation = creditInformation
     }
     
-    override func draw(with box: PDFDisplayBox, to context: CGContext) {
+    override func draw(with box: PDFDisplayBox , to context: CGContext) {
         super.draw(with: box, to : context)
+        
+        context.saveGState()
+        let cx = NSGraphicsContext(cgContext: context, flipped: false)
+        NSGraphicsContext.saveGraphicsState()
+        NSGraphicsContext.current = cx
+
         self.drawPDFTitle()
         self.drawPDFCreditInformation()
+        
+        NSGraphicsContext.restoreGraphicsState()
+        context.restoreGState()
+
     }
     
     func drawPDFTitle()
@@ -64,11 +72,12 @@ class CoverPDFPage: BasePDFPage{
         
         let titleRect = NSRect(x: pdfTitleX, y: pdfTitleY, width: pdfTitleWidth, height: pdfTitleHeight)
         self.pdfTitle.draw(in: titleRect, withAttributes: titleFontAttributes)
-        
+
     }
     
     func drawPDFCreditInformation()
     {
+
         let pdfCreditX = 1/4 * self.pdfWidth
         let pdfCreditY = self.pdfHeight / 2 - 1/5 * self.pdfHeight
         let pdfCreditWidth = 1/2 * self.pdfWidth
@@ -86,7 +95,6 @@ class CoverPDFPage: BasePDFPage{
         
         let creditRect = NSMakeRect(pdfCreditX, pdfCreditY, pdfCreditWidth, pdfCreditHeight)
         self.creditInformation.draw(in: creditRect, withAttributes: creditFontAttributes)
-        
     }
     
 }
