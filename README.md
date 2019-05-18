@@ -1,12 +1,11 @@
-# PDFGeneratorTableView
+
 
 <p align="center">
     <img src="https://img.shields.io/badge/Swift-5.0-orange.svg" />
-    <a href="https://swift.org/package-manager">
-        <img src="https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat" alt="Swift Package Manager" />
-    </a>
-     <img src="https://img.shields.io/badge/platforms-mac+linux-brightgreen.svg?style=flat" alt="Mac" />
+    <img src="https://img.shields.io/badge/platforms-mac-brightgreen.svg?style=flat" alt="Mac" />
 </p>
+
+# PDFGeneratorTableView
 
 
 there are very few examples to print an nstableview. examples are uncommon
