@@ -22,6 +22,7 @@ class BasePDFPage :PDFPage{
     var pdfHeight = CGFloat(1024.0) //This is configurable
     var pdfWidth = CGFloat(768.0)   //This is configurable and is calculated based on the number of columns
     
+    
     func drawLine( _ fromPoint:NSPoint,  toPoint:NSPoint){
         let path = NSBezierPath()
         NSColor.lightGray.set()
@@ -83,7 +84,7 @@ class BasePDFPage :PDFPage{
     
     func drawPageNumbers()
     {
-        let pageNumTextX = self.pdfWidth/2
+        let pageNumTextX = self.pdfWidth / 2
         let pageNumTextY = CGFloat(15.0)
         let pageNumTextWidth = CGFloat(40.0)
         let pageNumTextHeight = CGFloat(20.0)

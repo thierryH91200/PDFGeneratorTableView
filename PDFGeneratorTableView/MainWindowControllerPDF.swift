@@ -12,7 +12,7 @@ import Quartz
 extension MainWindowController {
     
     @IBAction func generatePDF (_ sender:NSButton) {
-                
+        
         for page in 0..<aPDFDocument.pageCount {
             aPDFDocument.removePage(at: page)
         }
@@ -29,6 +29,8 @@ extension MainWindowController {
                                      pageNumber: 1)
         
         aPDFDocument.insert(coverPage, at: 0)
+        
+        
         
         let tableColumns = tableView.tableColumns
         columnInformation.removeAll()
@@ -77,7 +79,7 @@ extension MainWindowController {
                                                  pageWidth: pageWidth,
                                                  pageHeight: pageHeight,
                                                  hasPageNumber: true,
-                                                 pageNumber: i+1,
+                                                 pageNumber: i + 2,
                                                  pdfData: pdfDataArray as [AnyObject],
                                                  columnArray: columnInformation as [AnyObject])
             

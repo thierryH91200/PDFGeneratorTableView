@@ -12,6 +12,18 @@ import Quartz
 
 class MainWindowController: NSWindowController {
     
+    let defaultRowHeight  = CGFloat(23.0)
+    let defaultColumnWidth = CGFloat(150.0)
+    let numberOfRowsPerPage = 60
+    
+    let topMargin = CGFloat(40.0)
+    let leftMargin = CGFloat(20.0)
+    let rightMargin = CGFloat(20.0)
+    let bottomMargin = CGFloat (40.0)
+    let textInset = CGFloat(5.0)
+    let verticalPadding = CGFloat (10.0)
+
+    
     @IBOutlet weak var tabView: NSTabView!
     
     @IBOutlet weak var tableViewBinding: NSTableView!
@@ -94,7 +106,6 @@ class MainWindowController: NSWindowController {
 
         
         tableView.reloadData()
-        
         tableViewBinding.reloadData()
     }
     
@@ -148,9 +159,7 @@ class MainWindowController: NSWindowController {
         var headerLine = ""
         var myPrintView = NSView()
         
-        let printOpts: [NSPrintInfo.AttributeKey: Any] =
-            [NSPrintInfo.AttributeKey.headerAndFooter: true,
-             NSPrintInfo.AttributeKey.orientation : 1]
+        let printOpts: [NSPrintInfo.AttributeKey: Any] = [.headerAndFooter: true, .orientation : 1]
         let printInfo = NSPrintInfo(dictionary: printOpts)
         
         printInfo.leftMargin = 20
@@ -203,52 +212,6 @@ class MainWindowController: NSWindowController {
     }
 }
 
-
-
-
-class Others {
-    var name = ""
-    var things = ""
-    
-    init(name: String, things: String) {
-        self.name = name
-        self.things = things
-    }
-    
-}
-
-class Creatures {
-    var type: String
-    var other: [Others]
-    
-    init(type: String, other: [Others]) {
-        self.type = type
-        self.other = other
-    }
-}
-
-@objcMembers class Person:NSObject {
-    var givenName  = ""
-    var familyName = ""
-    var age        = ""
-    
-    class func createPerson(fName: String, lName: String, age: String)->Person {
-        let person        = Person()
-        person.givenName  = fName
-        person.familyName = lName
-        person.age        = age
-        return person
-        
-    }
-    
-    func convertIntoDict() -> Dictionary<String, String> {
-        var dict = Dictionary<String, String>()
-        dict["givenName"] = self.givenName
-        dict["familyName"] = self.familyName
-        dict["age"] = self.age
-        return dict
-    }
-}
 
 final class KSHeaderCellView: NSTableCellView {
     
