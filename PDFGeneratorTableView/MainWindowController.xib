@@ -229,7 +229,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="958" height="327"/>
                                             <clipView key="contentView" id="dsa-p5-1cq">
                                                 <rect key="frame" x="1" y="0.0" width="956" height="326"/>
-                                                <autoresizingMask key="autoresizingMask"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="sequential" multipleSelection="NO" autosaveName="savecol" rowSizeStyle="automatic" headerView="3O0-p2-SEK" viewBased="YES" indentationPerLevel="16" outlineTableColumn="qDk-z3-zgt" id="ZUd-wq-p0y">
                                                         <rect key="frame" x="0.0" y="0.0" width="1345" height="303"/>
@@ -657,7 +657,7 @@
                                                     </outlineView>
                                                 </subviews>
                                             </clipView>
-                                            <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="LMD-s4-UiI">
+                                            <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.47300771208226222" horizontal="YES" id="LMD-s4-UiI">
                                                 <rect key="frame" x="1" y="310" width="956" height="16"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
