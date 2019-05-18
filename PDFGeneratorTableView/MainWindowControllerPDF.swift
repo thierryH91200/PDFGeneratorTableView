@@ -13,9 +13,7 @@ extension MainWindowController {
     
     @IBAction func generatePDF (_ sender:NSButton) {
         
-        for page in 0..<aPDFDocument.pageCount {
-            aPDFDocument.removePage(at: page)
-        }
+        aPDFDocument = PDFDocument()
         
         // Option
         let coverPage = CoverPDFPage(hasMargin: true,
@@ -29,8 +27,6 @@ extension MainWindowController {
                                      pageNumber: 1)
         
         aPDFDocument.insert(coverPage, at: 0)
-        
-        
         
         let tableColumns = tableView.tableColumns
         columnInformation.removeAll()

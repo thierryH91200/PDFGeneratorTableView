@@ -41,7 +41,7 @@ class MainWindowController: NSWindowController {
     
     var creatures = [Creatures]()
     
-    let aPDFDocument = PDFDocument()
+    var aPDFDocument = PDFDocument()
     
     /// the data for the table
     @objc var datas = [[String: Any]]()
@@ -211,7 +211,6 @@ class MainWindowController: NSWindowController {
         }
     }
 }
-
 
 final class KSHeaderCellView: NSTableCellView {
     
