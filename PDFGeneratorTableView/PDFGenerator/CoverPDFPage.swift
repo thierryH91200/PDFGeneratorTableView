@@ -40,17 +40,12 @@ class CoverPDFPage: BasePDFPage{
     override func draw(with box: PDFDisplayBox , to context: CGContext) {
         super.draw(with: box, to : context)
         
-        context.saveGState()
-        let cx = NSGraphicsContext(cgContext: context, flipped: false)
-        NSGraphicsContext.saveGraphicsState()
-        NSGraphicsContext.current = cx
+        NSUIGraphicsPushContext(context)
 
         self.drawPDFTitle()
         self.drawPDFCreditInformation()
         
-        NSGraphicsContext.restoreGraphicsState()
-        context.restoreGState()
-
+        NSUIGraphicsPopContext()
     }
     
     func drawPDFTitle()

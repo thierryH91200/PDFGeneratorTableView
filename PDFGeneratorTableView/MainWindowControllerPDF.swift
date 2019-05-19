@@ -18,7 +18,7 @@ extension MainWindowController {
         // Option
         let coverPage = CoverPDFPage(hasMargin: true,
                                      title: "This is the cover page title. Keep it short or keep it long",
-                                     creditInformation: "Created By: github.com \r Sep 2018",
+                                     creditInformation: "Created By: github.com \r May 2019",
                                      headerText: "Some confidential info",
                                      footerText: "www.github.com",
                                      pageWidth: CGFloat(900.0),
@@ -82,16 +82,35 @@ extension MainWindowController {
             aPDFDocument.insert(tabularDataPDF, at: i + 1)
         }
         
+        
         let paths = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true)
         let userDesktopDirectory = paths[0] + "/sample1.pdf"
+        
         aPDFDocument.write(toFile: userDesktopDirectory)
         
         self.infoLabel.isHidden = false
         self.infoLabel.stringValue = "Document saved to: " + userDesktopDirectory
         
         let fileURL = URL(fileURLWithPath: userDesktopDirectory)
-        
         SendEmail.send(fileURL: fileURL)
+        
+//        let myPDFViewObject = PDFView()
+//        if let path = Bundle.main.path(forResource: "sample1", ofType: "pdf"){
+//            let url = URL.init(fileURLWithPath: path)
+//            if let pdfDocument = PDFDocument(url: url){
+//                myPDFViewObject.document = pdfDocument
+//                myPDFViewObject.autoScales = true
+//                myPDFViewObject.layoutDocumentView()
+//            }
+//        }
+//
+//        var thumbSize: NSSize = NSSize()
+//        thumbSize.width = 120
+//        thumbSize.height = 200
+//        self.pdfThumbnailView.thumbnailSize = thumbSize
+//        pdfThumbnailView.backgroundColor = .lightGray
+////        pdfThumbnailView.la = .horizontal
+//        pdfThumbnailView.pdfView = myPDFViewObject
         
 //        printDoc(aPDFDocument, using: window!)
     }

@@ -13,7 +13,6 @@ class TabularPDFPage: BasePDFPage{
     
     var dataArray = [AnyObject]()
     var columnsArray = [AnyObject]()
-//    var verticalPadding = CGFloat(10.0)
     
     init(hasMargin:Bool,
          headerText:String,
@@ -40,17 +39,13 @@ class TabularPDFPage: BasePDFPage{
     override func draw(with box: PDFDisplayBox, to context: CGContext) {
         super.draw(with: box, to: context)
         
-        context.saveGState()
-        let cx = NSGraphicsContext(cgContext: context, flipped: false)
-        NSGraphicsContext.saveGraphicsState()
-        NSGraphicsContext.current = cx
+        NSUIGraphicsPushContext(context)
 
         self.drawTableData()
         self.drawVerticalGrids()
         self.drawHorizontalGrids()
         
-        NSGraphicsContext.restoreGraphicsState()
-        context.restoreGState()
+        NSUIGraphicsPopContext()
     }
     
     func drawTableData(){
@@ -119,7 +114,7 @@ class TabularPDFPage: BasePDFPage{
             let x = leftMargin + (columnsArray[i]["offsetX"] as! CGFloat)
             let fromPoint = NSPoint( x: x, y: self.pdfHeight - topMargin )
             let toPoint = NSPoint( x: x, y: bottomMargin )
-            drawLine(fromPoint, toPoint: toPoint)
+            drawLine(fromPoint: fromPoint, toPoint: toPoint)
         }
     }
     
@@ -130,8 +125,9 @@ class TabularPDFPage: BasePDFPage{
             let fromPoint = NSPoint( x: leftMargin ,                 y: y)
             let toPoint = NSPoint(   x: self.pdfWidth - rightMargin, y: y)
             
-            drawLine(fromPoint, toPoint: toPoint)
+            drawLine(fromPoint: fromPoint, toPoint: toPoint)
         }
     }
+    
     
 }

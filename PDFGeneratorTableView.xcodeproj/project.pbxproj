@@ -20,6 +20,7 @@
 		03337FCE215954D100860796 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03337FCD215954D100860796 /* README.md */; };
 		034517D5229007B7004B0A36 /* BasePDFPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034517D4229007B7004B0A36 /* BasePDFPage.swift */; };
 		034517D722900820004B0A36 /* CoverPDFPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034517D622900820004B0A36 /* CoverPDFPage.swift */; };
+		034517E022905BBD004B0A36 /* sample1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 034517DF22905BBD004B0A36 /* sample1.pdf */; };
 		0356BAEC2157DA0A009A9397 /* MainWindowControllerPDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0356BAEB2157DA0A009A9397 /* MainWindowControllerPDF.swift */; };
 		036B849A2154B35A007A525B /* MyPrintViewTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036B84992154B35A007A525B /* MyPrintViewTable.swift */; };
 		03A6B742228E812A00148F22 /* MainWindowControllerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A6B741228E812A00148F22 /* MainWindowControllerTableView.swift */; };
@@ -64,6 +65,7 @@
 		03337FCD215954D100860796 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		034517D4229007B7004B0A36 /* BasePDFPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePDFPage.swift; sourceTree = "<group>"; };
 		034517D622900820004B0A36 /* CoverPDFPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverPDFPage.swift; sourceTree = "<group>"; };
+		034517DF22905BBD004B0A36 /* sample1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = sample1.pdf; sourceTree = "<group>"; };
 		0356BAEB2157DA0A009A9397 /* MainWindowControllerPDF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowControllerPDF.swift; sourceTree = "<group>"; };
 		036B84992154B35A007A525B /* MyPrintViewTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPrintViewTable.swift; sourceTree = "<group>"; };
 		03A6B741228E812A00148F22 /* MainWindowControllerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowControllerTableView.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				036B84992154B35A007A525B /* MyPrintViewTable.swift */,
 				03337FC92158FCC200860796 /* Node.swift */,
 				03062178213BE1D400FCA5DD /* PDFGeneratorTableView.entitlements */,
+				034517DF22905BBD004B0A36 /* sample1.pdf */,
 				03A6B743228E819000148F22 /* MainWindowControllerOutlineView.swift */,
 				03A6B741228E812A00148F22 /* MainWindowControllerTableView.swift */,
 				034517D8229008B7004B0A36 /* PDFGenerator */,
@@ -290,6 +293,7 @@
 				0306219F213BE22700FCA5DD /* MainWindowController.xib in Resources */,
 				03337FCE215954D100860796 /* README.md in Resources */,
 				03062176213BE1D400FCA5DD /* MainMenu.xib in Resources */,
+				034517E022905BBD004B0A36 /* sample1.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

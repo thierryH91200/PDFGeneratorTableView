@@ -53,12 +53,7 @@ class BasePDFPage :PDFPage{
     
     override func draw(with box: PDFDisplayBox, to context: CGContext)  {
         
-        context.saveGState()
-        let cx = NSGraphicsContext(cgContext: context, flipped: false)
-        NSGraphicsContext.saveGraphicsState()
-        NSGraphicsContext.current = cx
-
-        
+        NSUIGraphicsPushContext(context)
         if hasPageNumber ==  true {
             self.drawPageNumbers()
         }
@@ -72,9 +67,7 @@ class BasePDFPage :PDFPage{
             self.drawFooter()
         }
         
-        NSGraphicsContext.restoreGraphicsState()
-        context.restoreGState()
-
+        NSUIGraphicsPopContext()
     }
     
     override func bounds(for box: PDFDisplayBox) -> NSRect
@@ -82,7 +75,7 @@ class BasePDFPage :PDFPage{
         return NSRect(x: 0, y: 0, width: pdfWidth, height: pdfHeight)
     }
 
-    func drawLine( _ fromPoint : NSPoint, toPoint : NSPoint){
+    func drawLine( fromPoint : NSPoint, toPoint : NSPoint){
         let path = NSBezierPath()
         NSColor.lightGray.set()
         path.move(to: fromPoint)
@@ -161,5 +154,19 @@ class BasePDFPage :PDFPage{
         let pageNumberStr = "\(self.pageNumber)"
         pageNumberStr.draw(in: pageNumRect, withAttributes: pageNumFontAttributes)
     }
+    
+    func NSUIGraphicsPushContext(_ context: CGContext)
+    {
+        let cx = NSGraphicsContext(cgContext: context, flipped: false)
+        NSGraphicsContext.saveGraphicsState()
+        NSGraphicsContext.current = cx
+    }
+    
+    func NSUIGraphicsPopContext()
+    {
+        NSGraphicsContext.restoreGraphicsState()
+    }
+    
+
     
 }

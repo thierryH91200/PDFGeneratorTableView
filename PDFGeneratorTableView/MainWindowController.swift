@@ -8,6 +8,7 @@
 
 import AppKit
 import Quartz
+//import PDFKit
 
 
 class MainWindowController: NSWindowController {
@@ -22,7 +23,9 @@ class MainWindowController: NSWindowController {
     let bottomMargin = CGFloat (40.0)
     let textInset = CGFloat(5.0)
     let verticalPadding = CGFloat (10.0)
-
+    
+    
+    @IBOutlet weak var pdfThumbnailView: PDFThumbnailView!
     
     @IBOutlet weak var tabView: NSTabView!
     
