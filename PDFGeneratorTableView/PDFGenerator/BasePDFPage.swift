@@ -18,8 +18,8 @@ class BasePDFPage :PDFPage{
     var hasPageNumber = true
     var pageNumber = 1
     
-    var pdfHeight = CGFloat(1024.0) //This is configurable
-    var pdfWidth = CGFloat(768.0)   //This is configurable and is calculated based on the number of columns
+    var pdfHeight = CGFloat(842.0) //This is configurable
+    var pdfWidth = CGFloat(595.0)   //This is configurable and is calculated based on the number of columns
     
     let defaultRowHeight  = CGFloat(23.0)
     let defaultColumnWidth = CGFloat(150.0)
@@ -31,7 +31,6 @@ class BasePDFPage :PDFPage{
     let bottomMargin = CGFloat (40.0)
     let textInset = CGFloat(5.0)
     let verticalPadding = CGFloat (10.0)
-
     
     init(hasMargin:Bool,
          headerText:String,

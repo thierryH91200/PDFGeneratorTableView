@@ -24,6 +24,10 @@ class MainWindowController: NSWindowController {
     let textInset = CGFloat(5.0)
     let verticalPadding = CGFloat (10.0)
     
+    var myPDFViewObject = PDFView()
+    var aPDFDocument = PDFDocument()
+
+    
     
     @IBOutlet weak var pdfThumbnailView: PDFThumbnailView!
     
@@ -44,7 +48,6 @@ class MainWindowController: NSWindowController {
     
     var creatures = [Creatures]()
     
-    var aPDFDocument = PDFDocument()
     
     /// the data for the table
     @objc var datas = [[String: Any]]()

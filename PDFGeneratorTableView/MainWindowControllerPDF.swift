@@ -21,8 +21,8 @@ extension MainWindowController {
                                      creditInformation: "Created By: github.com \r May 2019",
                                      headerText: "Some confidential info",
                                      footerText: "www.github.com",
-                                     pageWidth: CGFloat(900.0),
-                                     pageHeight: CGFloat(1200.0),
+                                     pageWidth: CGFloat(595),
+                                     pageHeight: CGFloat(842),
                                      hasPageNumber: true,
                                      pageNumber: 1)
         
@@ -91,28 +91,55 @@ extension MainWindowController {
         self.infoLabel.isHidden = false
         self.infoLabel.stringValue = "Document saved to: " + userDesktopDirectory
         
-        let fileURL = URL(fileURLWithPath: userDesktopDirectory)
-        SendEmail.send(fileURL: fileURL)
-        
-//        let myPDFViewObject = PDFView()
 //        if let path = Bundle.main.path(forResource: "sample1", ofType: "pdf"){
 //            let url = URL.init(fileURLWithPath: path)
-//            if let pdfDocument = PDFDocument(url: url){
+//            if let pdfDocument = PDFDocument(url: url) {
+//                let count = pdfDocument.majorVersion
+//
 //                myPDFViewObject.document = pdfDocument
 //                myPDFViewObject.autoScales = true
 //                myPDFViewObject.layoutDocumentView()
 //            }
 //        }
-//
-//        var thumbSize: NSSize = NSSize()
-//        thumbSize.width = 120
-//        thumbSize.height = 200
-//        self.pdfThumbnailView.thumbnailSize = thumbSize
-//        pdfThumbnailView.backgroundColor = .lightGray
-////        pdfThumbnailView.la = .horizontal
-//        pdfThumbnailView.pdfView = myPDFViewObject
+
+    }
+    
+    @IBAction func sendMail (_ sender:NSButton) {
         
-//        printDoc(aPDFDocument, using: window!)
+        let paths = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true)
+        let userDesktopDirectory = paths[0] + "/sample1.pdf"
+
+        let fileURL = URL(fileURLWithPath: userDesktopDirectory)
+        SendEmail.send(fileURL: fileURL)
+
+    }
+    
+    @IBAction func actionThumb (_ sender:NSButton) {
+        let paths = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true)
+        let userDesktopDirectory = paths[0] + "/sample1.pdf"
+        
+        let url = URL(fileURLWithPath: userDesktopDirectory)
+        aPDFDocument = PDFDocument(url: url)!
+        myPDFViewObject.document = aPDFDocument
+        myPDFViewObject.autoScales = true
+        myPDFViewObject.layoutDocumentView()
+        
+        var thumbSize: NSSize = NSSize()
+        thumbSize.width = 120
+        thumbSize.height = 200
+        self.pdfThumbnailView.thumbnailSize = thumbSize
+        pdfThumbnailView.backgroundColor = .lightGray
+        pdfThumbnailView.pdfView = myPDFViewObject
+    }
+    
+    @IBAction func actionPrint (_ sender:NSButton) {
+        let paths = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true)
+        let userDesktopDirectory = paths[0] + "/sample1.pdf"
+        
+        let url = URL(fileURLWithPath: userDesktopDirectory)
+        aPDFDocument = PDFDocument(url: url)!
+
+        printDoc(aPDFDocument, using: window!)
     }
     
     func printDoc(_ pdfDocument: PDFDocument, using window: NSWindow) {

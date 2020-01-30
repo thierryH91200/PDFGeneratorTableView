@@ -124,6 +124,11 @@ class MyPrintViewOutline: NSView
         var horizontalOffset: CGFloat = 0
         for column in tableToPrint!.tableColumns {
             
+            if column.isHidden == true {
+                continue
+            }
+
+            
             let headerRect = NSMakeRect(
                 leftMargin + horizontalOffset,
                 topMargin,
@@ -156,6 +161,11 @@ class MyPrintViewOutline: NSView
             var offsetX : CGFloat = 16
             
             for column in tableToPrint!.tableColumns {
+                
+                if column.isHidden == true {
+                    continue
+                }
+
                 
                 var valueAsStr = ""
                 
