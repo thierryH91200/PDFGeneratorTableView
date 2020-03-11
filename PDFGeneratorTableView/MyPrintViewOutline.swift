@@ -20,7 +20,8 @@ class MyPrintViewOutline: NSView
     var headerHeight : CGFloat = 0.0
     var footerHeight : CGFloat = 0.0
     var lineHeight   : CGFloat = 0.0
-    var entryHeight  : CGFloat = 0.0
+    var rowHeight: CGFloat = 0.0
+
     var pageRect               = NSRect.zero
     var linesPerPage           = 0
     var currentPage            = 0
@@ -51,8 +52,8 @@ class MyPrintViewOutline: NSView
         listFont = NSFont(name: "Helvetica", size: 10.0)
         
         lineHeight = listFont!.boundingRectForFont.size.height
-        entryHeight = listFont!.capHeight * 2.5
-        headerHeight = margin + entryHeight
+        rowHeight = listFont!.capHeight * 2.5
+        headerHeight = margin + rowHeight
         footerHeight = margin
         
         leftMargin = pageRect.origin.x + margin
@@ -77,7 +78,7 @@ class MyPrintViewOutline: NSView
         self.frame = newFrame
         
         // Number of lines per page
-        linesPerPage = Int((pageRect.size.height - headerHeight - footerHeight) / entryHeight - CGFloat(1))
+        linesPerPage = Int((pageRect.size.height - headerHeight - footerHeight) / rowHeight - CGFloat(1))
         
         // Number of full pages
         var noPages: Int = numberOfRows / linesPerPage
@@ -107,6 +108,87 @@ class MyPrintViewOutline: NSView
         return true
     }
     
+    func drawHeader(tableCellView : KSHeaderCellView, columnWidth : CGFloat, horizontalOffset : CGFloat, indexPage : Int) -> CGFloat {
+        
+        var valueAsStr = ""
+        var horizontalOffset = horizontalOffset
+        let inset = (rowHeight - lineHeight - 1.0) / 2.0
+
+        // draw triangle
+        let rectDis = NSMakeRect( leftMargin + horizontalOffset, topMargin + rowHeight * CGFloat(indexPage + 1) + 4, 8 , 8)
+        
+        let center = CGPoint(x: rectDis.midX, y: rectDis.midY)
+        let side = rectDis.width
+        let bezierPathDis = trianglePath(center: center, side: side)
+        
+        bezierPathDis.stroke()
+        bezierPathDis.fill()
+        bezierPathDis.close()
+        
+        // Now we can finally draw the entry
+        valueAsStr = (tableCellView.textField?.stringValue)!
+        attributes[.foregroundColor] = (tableCellView.textField?.textColor)!
+        
+        let fillColor = tableCellView.fillColor
+        
+        let rect = NSMakeRect(
+            self.leftMargin + horizontalOffset + 10 ,
+            self.topMargin + self.rowHeight * CGFloat(indexPage + 1),
+            (self.pageRect.size.width - self.margin - 10 ) ,
+            self.rowHeight)
+        
+        horizontalOffset += self.widthQuotient * columnWidth
+        
+        let bezierPath = NSBezierPath(rect: rect)
+        fillColor.set()
+        bezierPath.fill()
+        
+        NSColor.lightGray.set()
+        bezierPath.stroke()
+        bezierPath.close()
+        
+        let stringRect = NSInsetRect(rect, inset, inset)
+        valueAsStr.draw(in: stringRect, withAttributes: attributes)
+        
+        return horizontalOffset
+    }
+    
+    
+    // Column titles
+    func drawColumnTitle() {
+        
+        let inset = (rowHeight - lineHeight - 1.0) / 2.0
+        var horizontalOffset: CGFloat = 0
+        for column in tableToPrint!.tableColumns {
+            
+            if column.isHidden == true {
+                continue
+            }
+            
+            let headerRect = NSMakeRect(
+                self.leftMargin + horizontalOffset,
+                self.topMargin,
+                self.widthQuotient * column.width,
+                self.rowHeight)
+            
+            horizontalOffset += widthQuotient * column.width
+            
+            let bezierPath = NSBezierPath(rect: headerRect)
+            NSColor.red.setFill()
+            bezierPath.fill()
+            
+            NSColor.blue.set()
+            bezierPath.stroke()
+            bezierPath.close()
+            
+            let columnTitle = column.title
+            columnTitle.draw(in: NSInsetRect(headerRect, inset, inset), withAttributes: attributes)
+        }
+
+    }
+
+
+    
     // This is where the drawing takes place
     override func draw(_ dirtyRect: NSRect) {
         
@@ -118,44 +200,18 @@ class MyPrintViewOutline: NSView
         }
         widthQuotient = (pageRect.size.width - margin) / originalWidth
 
-        let inset = (entryHeight - lineHeight - 1.0) / 2.0
+        let inset = (rowHeight - lineHeight - 1.0) / 2.0
         
         // Column titles
-        var horizontalOffset: CGFloat = 0
-        for column in tableToPrint!.tableColumns {
-            
-            if column.isHidden == true {
-                continue
-            }
-
-            
-            let headerRect = NSMakeRect(
-                leftMargin + horizontalOffset,
-                topMargin,
-                widthQuotient * column.width,
-                entryHeight)
-            
-            horizontalOffset += widthQuotient * column.width
-            
-            let bpath = NSBezierPath(rect: headerRect)
-            NSColor.red.setFill()
-            bpath.fill()
-            
-            NSColor.blue.set()
-            bpath.stroke()
-            bpath.close()
-            
-            let columnTitle = column.title
-            columnTitle.draw(in: NSInsetRect(headerRect, inset, inset), withAttributes: attributes)
-        }
+        drawColumnTitle()
         
         let firstEntryOfPage = currentPage * linesPerPage
         let lastEntryOfPage = ((currentPage + 1) * linesPerPage) > tableToPrint!.numberOfRows ? tableToPrint!.numberOfRows : ((currentPage + 1) * linesPerPage)
         numberOfRowsByPage = lastEntryOfPage - firstEntryOfPage
         
-        for i in 0..<( lastEntryOfPage - firstEntryOfPage) {
+        for indexPage in 0..<( lastEntryOfPage - firstEntryOfPage) {
             
-            let row = firstEntryOfPage + i
+            let row = firstEntryOfPage + indexPage
             var horizontalOffset: CGFloat = 0
             var numCol = 0
             var offsetX : CGFloat = 16
@@ -168,45 +224,12 @@ class MyPrintViewOutline: NSView
 
                 
                 var valueAsStr = ""
-                
+                let columnWidth = column.width
+
                 // Header ???
                 if let tableCellView = tableToPrint?.view(atColumn: numCol, row: row, makeIfNecessary: true) as? KSHeaderCellView {
                     
-                    // draw triangle
-                    let rectDis = NSMakeRect( leftMargin + horizontalOffset, topMargin +  entryHeight * CGFloat(i + 1) + 4, 8 , 8)
-                    
-                    let center = CGPoint(x: rectDis.midX, y: rectDis.midY)
-                    let side = rectDis.width
-                    let bezierPathDis = trianglePath(center: center, side: side)
-                    
-                    bezierPathDis.stroke()
-                    bezierPathDis.fill()
-                    bezierPathDis.close()
-
-                    // Now we can finally draw the entry
-                    valueAsStr = (tableCellView.textField?.stringValue)!
-                    attributes[.foregroundColor] = (tableCellView.textField?.textColor)!
-                    
-                    let fillColor = tableCellView.fillColor
-                    
-                    let rect = NSMakeRect(
-                        leftMargin + horizontalOffset + 10 ,
-                        topMargin + entryHeight * CGFloat(i + 1),
-                        (pageRect.size.width - margin - 10 ) ,
-                        entryHeight)
-                    
-                    horizontalOffset += widthQuotient * column.width
-                    
-                    let bezierPath = NSBezierPath(rect: rect)
-                    fillColor.set()
-                    bezierPath.fill()
-                    
-                    NSColor.lightGray.set()
-                    bezierPath.stroke()
-                    bezierPath.close()
-                    
-                    let stringRect = NSInsetRect(rect, inset, inset)
-                    valueAsStr.draw(in: stringRect, withAttributes: attributes)
+                    horizontalOffset = drawHeader(tableCellView: tableCellView, columnWidth: columnWidth, horizontalOffset: horizontalOffset, indexPage: indexPage)
                 }
                 else
                     
@@ -216,9 +239,9 @@ class MyPrintViewOutline: NSView
                         
                         let rect = NSMakeRect(
                             leftMargin + horizontalOffset + offsetX,
-                            topMargin +  entryHeight * CGFloat(i + 1),
+                            topMargin +  rowHeight * CGFloat(indexPage + 1),
                             widthQuotient * column.width - 2,
-                            entryHeight)
+                            rowHeight)
                         
                         horizontalOffset += widthQuotient * column.width
                         
@@ -257,8 +280,8 @@ class MyPrintViewOutline: NSView
         let columns = tableToPrint!.tableColumns
         var offsetX : CGFloat = 0.0
         
-        var fromPoint = CGPoint(x : leftMargin, y: topMargin + entryHeight )
-        var toPoint   = CGPoint(x : leftMargin, y: topMargin + entryHeight * CGFloat(numberOfRowsByPage + 1 ))
+        var fromPoint = CGPoint(x : leftMargin, y: topMargin + rowHeight )
+        var toPoint   = CGPoint(x : leftMargin, y: topMargin + rowHeight * CGFloat(numberOfRowsByPage + 1 ))
         drawLine(fromPoint, toPoint: toPoint)
 
         for i in 0..<columns.count {
@@ -268,11 +291,11 @@ class MyPrintViewOutline: NSView
             //draw the vertical lines
             fromPoint = NSMakePoint(
                 leftMargin + offsetX ,
-                topMargin + entryHeight )
+                topMargin + rowHeight )
             
             toPoint = NSMakePoint(
                 leftMargin + offsetX ,
-                topMargin + entryHeight * CGFloat(numberOfRowsByPage + 1 ) )
+                topMargin + rowHeight * CGFloat(numberOfRowsByPage + 1 ) )
             
             drawLine(fromPoint, toPoint: toPoint)
         }
@@ -283,11 +306,11 @@ class MyPrintViewOutline: NSView
         for i in 0...numberOfRowsByPage {
             let fromPoint = NSMakePoint(
                 leftMargin ,
-                topMargin + entryHeight + (CGFloat(i) * entryHeight)
+                topMargin + rowHeight + (CGFloat(i) * rowHeight)
             )
             let toPoint = NSMakePoint(
                 leftMargin + pageRect.size.width - rightMargin,
-                topMargin + entryHeight + (CGFloat(i) * entryHeight)
+                topMargin + rowHeight + (CGFloat(i) * rowHeight)
             )
             drawLine(fromPoint, toPoint: toPoint)
         }
