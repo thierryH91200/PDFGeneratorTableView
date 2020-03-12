@@ -34,7 +34,6 @@ class Others {
         self.name = name
         self.things = things
     }
-    
 }
 
 class Creatures {
