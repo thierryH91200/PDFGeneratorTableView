@@ -18,7 +18,7 @@ extension MainWindowController {
         // Option
         let coverPage = CoverPDFPage(hasMargin: true,
                                      title: "This is the cover page title. Keep it short or keep it long",
-                                     creditInformation: "Created By: github.com \r May 2019",
+                                     creditInformation: "Created By: github.com \r June 2022",
                                      headerText: "Some confidential info",
                                      footerText: "www.github.com",
                                      pageWidth: CGFloat(595),

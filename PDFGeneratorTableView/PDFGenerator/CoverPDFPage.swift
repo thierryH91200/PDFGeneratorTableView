@@ -72,7 +72,6 @@ class CoverPDFPage: BasePDFPage{
     
     func drawPDFCreditInformation()
     {
-
         let pdfCreditX = 1/4 * self.pdfWidth
         let pdfCreditY = self.pdfHeight / 2 - 1/5 * self.pdfHeight
         let pdfCreditWidth = 1/2 * self.pdfWidth
