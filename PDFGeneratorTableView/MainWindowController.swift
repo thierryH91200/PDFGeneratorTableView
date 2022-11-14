@@ -70,14 +70,14 @@ class MainWindowController: NSWindowController {
         
         let creatureDict = ["Animals": [["Cat", "12"],["Dog","22"], ["Horse", "33"]],
                             "Birds":   [["Eagle", "Hawk"]],
-                            "Birds1":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
-                            "Birds2":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
-                            "Birds3":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
-                            "Birds4":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
-                            "Birds5":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
-                            "Birds6":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
-                            "Birds7":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
-                            "Birds8":   [["Eagle", "Hawk"], ["Eagle", "Hawk"]],
+                            "Birds1":   [["Eagle1", "Hawk"], ["Eagle11", "Hawk"]],
+                            "Birds2":   [["Eagle2", "Hawk"], ["Eagle21", "Hawk"]],
+                            "Birds3":   [["Eagle3", "Hawk"], ["Eagle31", "Hawk"]],
+                            "Birds4":   [["Eagle4", "Hawk"], ["Eagle41", "Hawk"]],
+                            "Birds5":   [["Eagle5", "Hawk"], ["Eagle51", "Hawk"]],
+                            "Birds6":   [["Eagle6", "Hawk"], ["Eagle61", "Hawk"]],
+                            "Birds7":   [["Eagle7", "Hawk"], ["Eagle71", "Hawk"]],
+                            "Birds8":   [["Eagle8", "Hawk"], ["Eagle81", "Hawk"]],
                             "Fish":    [["Cod", "Mackeral"], ["Salmon", "Tilapia"]]]
         
         var other = [Others]()
@@ -93,7 +93,6 @@ class MainWindowController: NSWindowController {
         
         outlineView.dataSource = self
         outlineView.delegate = self
-        
         outlineView.expandItem(nil, expandChildren: true)
         
         
